@@ -1,2 +1,2 @@
-alert("This is loaded with webpack")
+alert("This is loaded with webpack through phoenix")
 
