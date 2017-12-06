@@ -20,7 +20,9 @@ defmodule AthenaWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", AthenaWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", AthenaWeb do
+    pipe_through :api
+
+    get "/books", BookController, :index
+  end
 end
