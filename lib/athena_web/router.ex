@@ -23,6 +23,7 @@ defmodule AthenaWeb.Router do
   scope "/api", AthenaWeb do
     pipe_through :api
 
-    get "/books", BookController, :index
+    resources "/books", BookController, only: [:index, :create]
+
   end
 end
