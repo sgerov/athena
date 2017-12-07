@@ -13,4 +13,8 @@ defmodule Athena.Factory do
       read_at: date
     }
   end
+
+  def url_factory do
+    %Athena.Url{ url: "http://www.url.com/" }
+  end
 end
