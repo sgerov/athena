@@ -17,4 +17,33 @@ defmodule AthenaWeb.BookController do
 
     conn |> put_status(:created) |> json(%{})
   end
+
+  def autocomplete(conn, %{"url" => url }) do
+    case HTTPoison.get(url) do
+      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+        title = body |> Floki.find("#productTitle") |> Floki.text
+        author = body |> Floki.find(".contributorNameID") |> Floki.text
+        published_at = body |> Floki.find("#booksTitle span.a-text-normal:last-of-type") |> Floki.text
+        description = body |> Floki.find("#bookDescription_feature_div noscript div") |> Floki.text
+        cover =
+          case body |> Floki.attribute("#imageBlock img", "data-a-dynamic-image") |> Poison.decode do
+            { :ok, cover } ->
+              cover |> Map.keys |> List.first
+            { :error, _, _ } ->
+              []
+          end
+
+        conn |> put_status(200) |> json(%{
+          title: title,
+          cover: cover,
+          author: author,
+          published_at: published_at,
+          description: description
+        })
+      {:ok, %HTTPoison.Response{status_code: status_code}} ->
+        conn |> put_status(status_code) |> json(%{})
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        conn |> put_status(400) |> json(%{error: reason})
+    end
+  end
 end

@@ -26,7 +26,7 @@ defmodule AthenaWeb.UrlControllerTest do
 
   test "GET /urls/autocomplete", %{conn: conn} do
     params = %{ "url" => "http://www.url.com" }
-    response = %HTTPoison.Response{status_code: 200, body: '{ \"url\": \"url\"}'}
+    response = %HTTPoison.Response{status_code: 200, body: '{}'}
 
     with_mock HTTPoison, [get: fn("http://www.url.com") -> {:ok, response} end] do
       conn = get(conn, url_path(conn, :autocomplete), params)

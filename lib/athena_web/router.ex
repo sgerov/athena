@@ -24,6 +24,7 @@ defmodule AthenaWeb.Router do
     pipe_through :api
 
     resources "/books", BookController, only: [:index, :create]
+    get "/books/autocomplete", BookController, :autocomplete
 
     resources "/urls", UrlController, only: [:index, :create]
     get "/urls/autocomplete", UrlController, :autocomplete
