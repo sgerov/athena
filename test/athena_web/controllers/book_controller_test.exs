@@ -29,9 +29,6 @@ defmodule AthenaWeb.BookControllerTest do
       "read_at" => "2017-01-01"
     }
 
-    response =
-      conn
-      |> post(book_path(conn, :create), params)
-      |> json_response(201)
+    conn |> post(book_path(conn, :create), params) |> json_response(201)
   end
 end

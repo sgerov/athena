@@ -41,7 +41,10 @@ defmodule Athena.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:ex_machina, "~> 2.1", only: :test}
+      {:httpoison, "~> 0.13"},
+      {:floki, "~> 0.19.0"},
+      {:ex_machina, "~> 2.1", only: :test},
+      {:mock, "~> 0.2.0", only: :test}
     ]
   end
 

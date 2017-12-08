@@ -19,6 +19,6 @@ defmodule Athena.Url do
   def changeset(%Url{} = url, attrs) do
     url
     |> cast(attrs, [:url, :preview, :title, :summary, :score, :read_time_seconds])
-    |> validate_required([:url])
+    |> validate_required([:url, :preview, :title])
   end
 end
