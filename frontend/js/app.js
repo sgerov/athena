@@ -7,9 +7,9 @@ import reducers from "./reducers";
 import MyStore from "./store";
 
 render(
-          <Provider store={MyStore}>
-                        <App />
-          </Provider>,
-          document.getElementById("root")
-          );
+  <Provider store={MyStore}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
