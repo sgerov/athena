@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ListMessages from "../components/ListMessages";
+import ListBooks from "../components/ListBooks";
 import Actions from "../actions";
 
 class App extends Component {
@@ -9,12 +9,12 @@ class App extends Component {
   }
 
   render() {
-    const { messages, sendMessageToChannel } = this.props;
+    const { books, sendMessageToChannel } = this.props;
     let input;
 
     return (
       <div>
-        <ListMessages messages={messages} />
+        <ListBooks books={books} />
         <input type="text" ref={node => input = node} />
         <button onClick={() => sendMessageToChannel(input.value)}>
           SEND
@@ -27,8 +27,7 @@ class App extends Component {
 export const AppContainer = connect(
   function mapStateToProps(state) {
     return {
-      messages: state.chat.get("messages"),
-      books: state.books.items
+      books: state.books.model.get("items"),
     };
   },
   function mapDispatchToProps(dispatch) {

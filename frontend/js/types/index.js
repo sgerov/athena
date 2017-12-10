@@ -1,6 +1,6 @@
 //@ flow
 
 import Model from "./Model";
-import MessageType from "./MessageType";
+import BookType from "./BookType";
 
-export { Model, MessageType };
+export { Model, BookType };

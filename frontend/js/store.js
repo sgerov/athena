@@ -18,8 +18,11 @@ function composeWithApplyMiddlewares() {
 }
 
 const createMyStore = (model: Model = init) => {
-    return createStore(MainReducer, model,
-            composeWithApplyMiddlewares());
+    return createStore(
+      MainReducer, 
+      { books: { model: model, isFetching: false, didInvalidate: false } },
+      composeWithApplyMiddlewares()
+    );
 };
 
 export default createMyStore(init);

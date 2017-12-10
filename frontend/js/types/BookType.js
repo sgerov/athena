@@ -2,7 +2,7 @@
 
 import { Record } from "immutable";
 
-export default class MessageType
+export default class BookType
     extends Record({
         author: "",
         comment: "",

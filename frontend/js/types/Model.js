@@ -1,10 +1,10 @@
 // @flow
 import { Record, List } from "immutable";
-import MessageType from "./MessageType";
+import BookType from "./BookType";
 
 export default class Model
   extends Record({
-    messages: List(),
+    items: List()
   }) {
-  messages: List<MessageType>;
+  items: List<BookType>;
 }

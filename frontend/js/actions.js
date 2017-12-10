@@ -24,7 +24,7 @@ function receiveBooks(json) {
   return {
     type: RECEIVE_BOOKS,
     payload: { 
-      messages: json.books.map(book => book.title),
+      books: json.books.map(book => { return { title: book.title } }),
       receivedAt: Date.now()
     }
   }
