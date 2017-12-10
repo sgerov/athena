@@ -30,11 +30,15 @@ export const receiveUrls = (json) => {
 
 export const RECEIVE_URL = 'RECEIVE_URL'
 
-export const receiveUrl = (json) => {
+export const receiveUrl = (link, json) => {
+  let url = json
+  url.url = link
+  url.preview = json.images[0]
+
   return {
     type: RECEIVE_URL,
     payload: { 
-      url: json,
+      url,
       receivedAt: Date.now()
     }
   }
@@ -93,7 +97,7 @@ export const urlAutocomplete = (url) => {
         error => console.log('An error occurred.', error)
       )
       .then(json =>
-        dispatch(receiveUrl(json))
+        dispatch(receiveUrl(url, json))
       )
   }
 }
