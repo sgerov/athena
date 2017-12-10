@@ -1,3 +1,12 @@
+export const BOOK_CHANGE = 'BOOK_CHANGE'
+
+function bookChange(attr, value) {
+  return {
+    type: BOOK_CHANGE,
+    payload: { attr, value }
+  }
+}
+
 export const REQUEST_BOOKS = 'REQUEST_BOOKS'
 
 function requestBooks() {
@@ -14,6 +23,18 @@ function receiveBooks(json) {
     type: RECEIVE_BOOKS,
     payload: { 
       books: json.books,
+      receivedAt: Date.now()
+    }
+  }
+}
+
+export const RECEIVE_BOOK = 'RECEIVE_BOOK'
+
+function receiveBook(json) {
+  return {
+    type: RECEIVE_BOOK,
+    payload: { 
+      book: json,
       receivedAt: Date.now()
     }
   }
@@ -65,5 +86,19 @@ function addBook(book) {
   }
 }
 
+export const BOOK_AUTOCOMPLETE = 'BOOK_AUTOCOMPLETE'
 
-export default { addBook, requestBooks, fetchBooks};
+function bookAutocomplete(url) {
+  return (dispatch) => {
+    return fetch(`http://localhost:4000/api/books/autocomplete?url=${url}`)
+      .then(
+        response => response.json(),
+        error => console.log('An error occurred.', error)
+      )
+      .then(json =>
+        dispatch(receiveBook(json))
+      )
+  }
+}
+
+export default { addBook, requestBooks, fetchBooks, bookAutocomplete, bookChange};

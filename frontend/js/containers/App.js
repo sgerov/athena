@@ -21,10 +21,10 @@ class App extends Component {
   }
 }
 
-export const AppContainer = connect(
+const AppContainer = connect(
   function mapStateToProps(state) {
     return {
-      books: state.books.model.get("items"),
+      books: state.books.model.get("items")
     };
   },
   function mapDispatchToProps(dispatch) {

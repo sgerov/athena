@@ -6,11 +6,34 @@ import { combineReducers } from "redux";
 import {
     ADD_BOOK,
     FETCH_BOOKS,
+    BOOK_AUTOCOMPLETE,
+    BOOK_CHANGE,
     REQUEST_BOOKS,
-    RECEIVE_BOOKS
+    RECEIVE_BOOKS,
+    RECEIVE_BOOK,
 } from './actions'
 
 const init = new Model();
+
+function newBook(
+  newBook = {
+    title: '',
+    author: '',
+    cover: '',
+    published_at: '',
+    read_at: ''
+  },
+  action: { type: string, payload: Object }
+) {
+  switch (action.type) {
+    case RECEIVE_BOOK:
+      return Object.assign({}, newBook, action.payload.book)
+    case BOOK_CHANGE:
+      return Object.assign({}, newBook, { [action.payload.attr]: action.payload.value})
+    default:
+      return newBook;
+  }
+}
 
 function books(
   books = {
@@ -46,7 +69,8 @@ function books(
 }
 
 const phoenixApp = combineReducers({
-  books
+  books,
+  newBook
 });
 
 export default phoenixApp;
