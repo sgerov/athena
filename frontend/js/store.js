@@ -1,6 +1,6 @@
 // @flow
 
-import MainReducer from "./reducers";
+import MainReducer from "./reducers/";
 import { Model } from "./types";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
@@ -20,11 +20,18 @@ function composeWithApplyMiddlewares() {
 const createMyStore = (model: Model = init) => {
     return createStore(
       MainReducer, 
-      { books: 
-        { model: model, 
+      { 
+        books: {
+          model: model, 
           isFetching: false, 
           didInvalidate: false 
-        } 
+        },
+        book: {
+          title: '',
+          author: '',
+          published_at: '',
+          read_at: '',
+        }
       },
       composeWithApplyMiddlewares()
     );

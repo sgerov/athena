@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Actions from "../actions";
+import { bookAutocomplete, bookChange } from "../actions/";
 
 class AddBook extends Component {
   constructor(props) {
@@ -56,10 +56,10 @@ export const AddBookContainer = connect(
   function mapDispatchToProps(dispatch) {
     return {
       bookAutocomplete: url => {
-        dispatch(Actions.bookAutocomplete(url))
+        dispatch(bookAutocomplete(url))
       },
       bookChange: (attr, value) => {
-        dispatch(Actions.bookChange(attr, value))
+        dispatch(bookChange(attr, value))
       }
     };
   }

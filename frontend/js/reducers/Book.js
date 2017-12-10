@@ -1,8 +1,7 @@
 // @flow
 import fetch from 'cross-fetch'
-import { Model, BookType } from "./types";
 import { List } from "immutable";
-import { combineReducers } from "redux";
+import { Model, BookType } from "../types";
 import {
     ADD_BOOK,
     FETCH_BOOKS,
@@ -11,11 +10,11 @@ import {
     REQUEST_BOOKS,
     RECEIVE_BOOKS,
     RECEIVE_BOOK,
-} from './actions'
+} from '../actions/'
 
 const init = new Model();
 
-function newBook(
+export const newBook = (
   newBook = {
     title: '',
     author: '',
@@ -24,7 +23,7 @@ function newBook(
     read_at: ''
   },
   action: { type: string, payload: Object }
-) {
+) => {
   switch (action.type) {
     case RECEIVE_BOOK:
       return Object.assign({}, newBook, action.payload.book)
@@ -35,14 +34,14 @@ function newBook(
   }
 }
 
-function books(
+export const books = (
   books = {
     model: init,
     isFetching: false,
     didInvalidate: false,
   },
   action: { type: string, payload: Object }
-) {
+) => {
   switch (action.type) {
     case REQUEST_BOOKS:
       return Object.assign({}, books, {
@@ -67,10 +66,3 @@ function books(
       return books;
   }
 }
-
-const phoenixApp = combineReducers({
-  books,
-  newBook
-});
-
-export default phoenixApp;

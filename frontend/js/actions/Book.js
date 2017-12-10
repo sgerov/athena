@@ -1,6 +1,6 @@
 export const BOOK_CHANGE = 'BOOK_CHANGE'
 
-function bookChange(attr, value) {
+export const bookChange = (attr, value) => {
   return {
     type: BOOK_CHANGE,
     payload: { attr, value }
@@ -9,7 +9,7 @@ function bookChange(attr, value) {
 
 export const REQUEST_BOOKS = 'REQUEST_BOOKS'
 
-function requestBooks() {
+export const requestBooks = () => {
   return {
     type: REQUEST_BOOKS,
     payload: {}
@@ -18,7 +18,7 @@ function requestBooks() {
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS'
 
-function receiveBooks(json) {
+export const receiveBooks = (json) => {
   return {
     type: RECEIVE_BOOKS,
     payload: { 
@@ -30,7 +30,7 @@ function receiveBooks(json) {
 
 export const RECEIVE_BOOK = 'RECEIVE_BOOK'
 
-function receiveBook(json) {
+export const receiveBook = (json) => {
   return {
     type: RECEIVE_BOOK,
     payload: { 
@@ -42,7 +42,7 @@ function receiveBook(json) {
 
 export const FETCH_BOOKS = 'FETCH_BOOKS'
 
-function fetchBooks() {
+export const fetchBooks = () => {
   return (dispatch) => {
     dispatch(requestBooks())
 
@@ -59,7 +59,7 @@ function fetchBooks() {
 
 export const ADD_BOOK = 'ADD_BOOK'
 
-function addBook(book) {
+export const addBook = (book) => {
   return (dispatch) => {
     return fetch(`http://localhost:4000/api/books`, {
       method: "post",
@@ -88,7 +88,7 @@ function addBook(book) {
 
 export const BOOK_AUTOCOMPLETE = 'BOOK_AUTOCOMPLETE'
 
-function bookAutocomplete(url) {
+export const bookAutocomplete = (url) => {
   return (dispatch) => {
     return fetch(`http://localhost:4000/api/books/autocomplete?url=${url}`)
       .then(
@@ -100,5 +100,3 @@ function bookAutocomplete(url) {
       )
   }
 }
-
-export default { addBook, requestBooks, fetchBooks, bookAutocomplete, bookChange};

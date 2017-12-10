@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListBooks from "../components/ListBooks";
 import AddBook from "../components/AddBook";
-import Actions from "../actions";
+import { addBook, fetchBooks } from "../actions/";
 
 class App extends Component {
   componentWillMount() {
@@ -30,10 +30,10 @@ const AppContainer = connect(
   function mapDispatchToProps(dispatch) {
     return {
       addBook: message => {
-        dispatch(Actions.addBook(message));
+        dispatch(addBook(message));
       },
       fetchBooks: () => {
-        dispatch(Actions.fetchBooks());
+        dispatch(fetchBooks());
       }
     };
   }
