@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bookAutocomplete, bookChange, addBook } from "../actions/";
 
-class AddBook extends Component {
+class NewBook extends Component {
   constructor(props) {
     super(props)
 
@@ -47,7 +47,7 @@ class AddBook extends Component {
   }
 }
 
-export const AddBookContainer = connect(
+export const NewBookContainer = connect(
   function mapStateToProps(state) {
     return {
       book: state.newBook
@@ -66,6 +66,6 @@ export const AddBookContainer = connect(
       },
     };
   }
-)(AddBook);
+)(NewBook);
 
-export default AddBookContainer;
+export default NewBookContainer;

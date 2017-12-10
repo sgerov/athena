@@ -1,10 +1,14 @@
 // @flow
-import { books, newBook } from "./Book"
+import { books, bookAsyncStatus, newBook } from "./Book"
+import { urls, urlAsyncStatus } from "./Url"
 import { combineReducers } from "redux";
 
 const phoenixApp = combineReducers({
   books,
-  newBook
+  urls,
+  newBook,
+  bookAsyncStatus,
+  urlAsyncStatus,
 });
 
 export default phoenixApp;

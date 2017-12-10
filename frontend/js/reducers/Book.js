@@ -1,7 +1,7 @@
 // @flow
 import fetch from 'cross-fetch'
 import { List } from "immutable";
-import { Model, BookType } from "../types";
+import { BookType } from "../types";
 import {
     ADD_BOOK,
     FETCH_BOOKS,
@@ -11,8 +11,6 @@ import {
     RECEIVE_BOOKS,
     RECEIVE_BOOK,
 } from '../actions/'
-
-const init = new Model();
 
 export const newBook = (
   newBook = {
@@ -34,9 +32,8 @@ export const newBook = (
   }
 }
 
-export const books = (
-  books = {
-    model: init,
+export const bookAsyncStatus = (
+  state = {
     isFetching: false,
     didInvalidate: false,
   },
@@ -44,10 +41,20 @@ export const books = (
 ) => {
   switch (action.type) {
     case REQUEST_BOOKS:
-      return Object.assign({}, books, {
+      return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
       })
+    default:
+      return state;
+  }
+}
+
+export const books = (
+  state = [],
+  action: { type: string, payload: Object }
+) => {
+  switch (action.type) {
     case RECEIVE_BOOKS:
       const items = action.payload.books.map( book => {
         return new BookType({ 
@@ -56,13 +63,9 @@ export const books = (
         })
        })
 
-      return Object.assign({}, books, {
-        isFetching: false,
-        didInvalidate: false,
-        model: books.model.set("items", List(items)),
-        lastUpdated: action.receivedAt
-      })
+
+      return List(items)
     default:
-      return books;
+      return state;
   }
 }

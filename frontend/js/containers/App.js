@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListBooks from "../components/ListBooks";
-import AddBook from "./AddBook";
-import { fetchBooks } from "../actions/";
+import ListUrls from "../components/ListUrls";
+import NewBook from "./NewBook";
+import { fetchBooks, fetchUrls } from "../actions/";
 
 class App extends Component {
   componentWillMount() {
     this.props.fetchBooks();
+    this.props.fetchUrls();
   }
 
   render() {
-    const { books, addBook } = this.props;
+    const { urls, books } = this.props;
 
     return (
       <div>
         <ListBooks books={books} />
-        <AddBook />
+        <ListUrls urls={urls} />
+        <NewBook />
       </div>
     );
   }
@@ -24,13 +27,17 @@ class App extends Component {
 const AppContainer = connect(
   function mapStateToProps(state) {
     return {
-      books: state.books.model.get("items")
+      books: state.books,
+      urls: state.urls,
     };
   },
   function mapDispatchToProps(dispatch) {
     return {
       fetchBooks: () => {
         dispatch(fetchBooks());
+      },
+      fetchUrls: () => {
+        dispatch(fetchUrls());
       }
     };
   }

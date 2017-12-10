@@ -15,16 +15,17 @@ function composeWithApplyMiddlewares() {
     return compose(applyMiddleware(thunk));
 }
 
-const createMyStore = (model: Model = new Model()) => {
+const createMyStore = (urls: Array = [], books: Array = [], asyncStatus: Object = {}, newBook: Object = {}) => {
     return createStore(
       MainReducer, 
       { 
-        books: {
-          model: model, 
+        books: books, 
+        urls: urls, 
+        asyncStatus: {
           isFetching: false, 
           didInvalidate: false 
         },
-        book: {
+        newBook: {
           title: '',
           author: '',
           published_at: '',

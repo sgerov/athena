@@ -1,6 +1,6 @@
 //@ flow
 
-import Model from "./Model";
 import BookType from "./BookType";
+import UrlType from "./UrlType";
 
-export { Model, BookType };
+export { BookType, UrlType };
