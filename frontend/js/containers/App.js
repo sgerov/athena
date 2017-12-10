@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ListBooks from "../components/ListBooks";
+import AddBook from "../components/AddBook";
 import Actions from "../actions";
 
 class App extends Component {
@@ -10,15 +11,11 @@ class App extends Component {
 
   render() {
     const { books, addBook } = this.props;
-    let input;
 
     return (
       <div>
         <ListBooks books={books} />
-        <input type="text" ref={node => input = node} />
-        <button onClick={() => addBook(input.value)}>
-          SEND
-        </button>
+        <AddBook addBook={addBook} />
       </div>
     );
   }

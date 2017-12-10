@@ -27,7 +27,12 @@ function books(
         didInvalidate: false
       })
     case RECEIVE_BOOKS:
-      const items = action.payload.books.map( book => new BookType({ title: book.title }))
+      const items = action.payload.books.map( book => {
+        return new BookType({ 
+          title: book.title,
+          author: book.author,
+        })
+       })
 
       return Object.assign({}, books, {
         isFetching: false,
