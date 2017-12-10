@@ -69,11 +69,8 @@ export const addUrl = (url) => {
       },
       body: JSON.stringify({
         title: url.title,
-        author: url.author,
-        comment: "TODO",
-        cover: url.cover,
-        published_at: url.published_at,
-        read_at: url.read_at,
+        url: url.url,
+        preview: url.preview,
       })
     })
       .then(

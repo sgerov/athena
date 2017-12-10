@@ -15,7 +15,7 @@ function composeWithApplyMiddlewares() {
     return compose(applyMiddleware(thunk));
 }
 
-const createMyStore = (urls: Array = [], books: Array = [], asyncStatus: Object = {}, newBook: Object = {}) => {
+const createMyStore = (urls: Array = [], books: Array = [], asyncStatus: Object = {}, newBook: Object = {}, newUrl: Object = {}) => {
     return createStore(
       MainReducer, 
       { 

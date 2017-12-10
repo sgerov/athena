@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ListBooks from "../components/ListBooks";
 import ListUrls from "../components/ListUrls";
 import NewBook from "./NewBook";
+import NewUrl from "./NewUrl";
 import { fetchBooks, fetchUrls } from "../actions/";
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
         <ListBooks books={books} />
         <ListUrls urls={urls} />
         <NewBook />
+        <NewUrl />
       </div>
     );
   }

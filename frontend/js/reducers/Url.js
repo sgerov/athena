@@ -15,6 +15,7 @@ import {
 export const newUrl = (
   newUrl = {
     title: '',
+    url: '',
     preview: '',
     images: [],
   },
