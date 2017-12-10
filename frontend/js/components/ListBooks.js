@@ -6,7 +6,7 @@ function ListBooks(props) {
   const renderBooks = books.map((book, i) => {
     return <div key={i}>Title: {book.title} / Author: {book.author}</div>;
   });
-  return <div className="messages-container">{renderBooks}</div>;
+  return <div className="books-container">{renderBooks}</div>;
 }
 
 export default ListBooks;

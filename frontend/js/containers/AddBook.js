@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bookAutocomplete, bookChange } from "../actions/";
+import { bookAutocomplete, bookChange, addBook } from "../actions/";
 
 class AddBook extends Component {
   constructor(props) {
@@ -60,7 +60,10 @@ export const AddBookContainer = connect(
       },
       bookChange: (attr, value) => {
         dispatch(bookChange(attr, value))
-      }
+      },
+      addBook: book => {
+        dispatch(addBook(book));
+      },
     };
   }
 )(AddBook);
