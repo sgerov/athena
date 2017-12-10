@@ -9,14 +9,14 @@ class App extends Component {
   }
 
   render() {
-    const { books, sendMessageToChannel } = this.props;
+    const { books, addBook } = this.props;
     let input;
 
     return (
       <div>
         <ListBooks books={books} />
         <input type="text" ref={node => input = node} />
-        <button onClick={() => sendMessageToChannel(input.value)}>
+        <button onClick={() => addBook(input.value)}>
           SEND
         </button>
       </div>
@@ -32,8 +32,8 @@ export const AppContainer = connect(
   },
   function mapDispatchToProps(dispatch) {
     return {
-      sendMessageToChannel: message => {
-        dispatch(Actions.sendMessage(message));
+      addBook: message => {
+        dispatch(Actions.addBook(message));
       },
       fetchBooks: () => {
         dispatch(Actions.fetchBooks());
