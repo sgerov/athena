@@ -7,6 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <%# material-ui dependencies %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
     <title>Hello Athena!</title>
     <%= {:safe, css_link_tag()} %>
   </head>
