@@ -5,10 +5,19 @@ import { Provider } from "react-redux";
 import App from "./containers/App";
 import reducers from "./reducers/";
 import MyStore from "./store";
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 render(
   <Provider store={MyStore}>
-    <App />
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider> 
   </Provider>,
   document.getElementById("root")
 );

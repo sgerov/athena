@@ -14,6 +14,7 @@ import {
 
 export const newUrl = (
   newUrl = {
+    score: 0,
     title: '',
     url: '',
     preview: '',
@@ -59,7 +60,8 @@ export const urls = (
         return new UrlType({ 
           title: url.title,
           url: url.url,
-          author: url.author,
+          preview: url.preview,
+          score: parseInt(url.score || 0),
         })
        })
 

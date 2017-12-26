@@ -59,7 +59,11 @@ export const books = (
       const items = action.payload.books.map( book => {
         return new BookType({ 
           title: book.title,
+          comment: book.comment,
+          cover: book.cover,
           author: book.author,
+          published_at: book.published_at,
+          read_at: book.read_at,
         })
        })
 
