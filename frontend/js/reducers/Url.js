@@ -36,6 +36,7 @@ export const urlAsyncStatus = (
   state = {
     isFetching: false,
     didInvalidate: false,
+		page: 0
   },
   action: { type: string, payload: Object }
 ) => {
@@ -43,7 +44,8 @@ export const urlAsyncStatus = (
     case REQUEST_URLS:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false
+        didInvalidate: false,
+				page: action.payload.page
       })
     default:
       return state;

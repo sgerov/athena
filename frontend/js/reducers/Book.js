@@ -43,7 +43,8 @@ export const bookAsyncStatus = (
     case REQUEST_BOOKS:
       return Object.assign({}, state, {
         isFetching: true,
-        didInvalidate: false
+        didInvalidate: false,
+				page: action.payload.page
       })
     default:
       return state;

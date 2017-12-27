@@ -3,8 +3,9 @@ defmodule AthenaWeb.BookController do
 
   alias Athena.{Repo, Book}
 
-  def index(conn, _params) do
-    books = Repo.all(Book)
+  def index(conn, %{"page" => page}) do
+    books = paginated(Book, page, 5)
+
     render conn, books: books
   end
 

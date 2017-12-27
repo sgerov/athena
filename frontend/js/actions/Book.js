@@ -9,10 +9,10 @@ export const bookChange = (attr, value) => {
 
 export const REQUEST_BOOKS = 'REQUEST_BOOKS'
 
-export const requestBooks = () => {
+export const requestBooks = (page) => {
   return {
     type: REQUEST_BOOKS,
-    payload: {}
+    payload: { page }
   }
 }
 
@@ -42,11 +42,11 @@ export const receiveBook = (json) => {
 
 export const FETCH_BOOKS = 'FETCH_BOOKS'
 
-export const fetchBooks = () => {
+export const fetchBooks = (page = 1) => {
   return (dispatch) => {
-    dispatch(requestBooks())
+    dispatch(requestBooks(page))
 
-    return fetch(`http://localhost:4000/api/books`)
+    return fetch(`http://localhost:4000/api/books?page=${page}`)
       .then(
         response => response.json(),
         error => console.log('An error occurred.', error)

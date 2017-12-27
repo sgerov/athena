@@ -23,6 +23,7 @@ defmodule AthenaWeb do
       import Plug.Conn
       import AthenaWeb.Router.Helpers
       import AthenaWeb.Gettext
+      import AthenaWeb.Controllers.Helpers
     end
   end
 

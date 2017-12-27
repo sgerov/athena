@@ -4,7 +4,7 @@ import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import Book from './Book'
 import Url from './Url'
-import Typography from 'material-ui/Typography';
+import Title from './Title'
 
 const styles = theme => ({
 	root: {
@@ -45,15 +45,11 @@ function ListBooks(props) {
 	  	<div className="messages-container">
 				<Grid container spacing={24}>
 					<Grid item xs={12} sm={6}>
-            <Typography type="display3" gutterBottom align="center" color="inherit">
-              Retention training 
-            </Typography>
+						<Title type="urls" title="Memory retention" description="Online resources on which I practice retention"/>
 						{renderUrls}
 					</Grid>
 					<Grid item xs={12} sm={6}>
-            <Typography type="display3" gutterBottom align="center" color="inherit">
-              Books
-            </Typography>
+						<Title type="books" title="Books" description="My career related reading list along with impressions"/>
 		        {renderBooks}
 					</Grid>
 				</Grid>

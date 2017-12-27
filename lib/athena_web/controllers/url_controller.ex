@@ -1,10 +1,13 @@
 defmodule AthenaWeb.UrlController do
   use AthenaWeb, :controller
 
+  import Ecto.Query, only: [from: 2]
+
   alias Athena.{Repo, Url}
 
-  def index(conn, _params) do
-    urls = Repo.all(Url)
+  def index(conn, %{"page" => page}) do
+    urls = paginated(Url, page, 5)
+
     render conn, urls: urls
   end
 

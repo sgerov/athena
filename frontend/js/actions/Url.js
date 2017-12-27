@@ -9,10 +9,10 @@ export const urlChange = (attr, value) => {
 
 export const REQUEST_URLS = 'REQUEST_URLS'
 
-export const requestUrls = () => {
+export const requestUrls = (page) => {
   return {
     type: REQUEST_URLS,
-    payload: {}
+    payload: { page: page }
   }
 }
 
@@ -46,11 +46,11 @@ export const receiveUrl = (link, json) => {
 
 export const FETCH_URLS = 'FETCH_URLS'
 
-export const fetchUrls = () => {
+export const fetchUrls = (page = 1) => {
   return (dispatch) => {
-    dispatch(requestUrls())
+    dispatch(requestUrls(page))
 
-    return fetch(`http://localhost:4000/api/urls`)
+    return fetch(`http://localhost:4000/api/urls?page=${page}`)
       .then(
         response => response.json(),
         error => console.log('An error occurred.', error)
