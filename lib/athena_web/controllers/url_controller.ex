@@ -7,8 +7,9 @@ defmodule AthenaWeb.UrlController do
 
   def index(conn, %{"page" => page}) do
     urls = paginated(Url, page, 5)
+    total = Repo.aggregate(Url, :count, :id)
 
-    render conn, urls: urls
+    render conn, urls: urls, total: total
   end
 
   def create(conn, %{"url" => url, "preview" => preview, "title" => title }) do

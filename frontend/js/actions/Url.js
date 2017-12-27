@@ -23,6 +23,7 @@ export const receiveUrls = (json) => {
     type: RECEIVE_URLS,
     payload: { 
       urls: json.urls,
+			total: json.total,
       receivedAt: Date.now()
     }
   }

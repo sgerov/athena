@@ -1,9 +1,10 @@
 defmodule AthenaWeb.UrlView do
   use AthenaWeb, :view
 
-  def render("index.json", %{urls: urls}) do
+  def render("index.json", %{urls: urls, total: total}) do
     %{
-      urls: Enum.map(urls, &url_json/1)
+      urls: Enum.map(urls, &url_json/1),
+      total: total
     }
   end
 

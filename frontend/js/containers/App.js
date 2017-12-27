@@ -29,8 +29,8 @@ class App extends Component {
 const AppContainer = connect(
   function mapStateToProps(state) {
     return {
-      books: state.books,
-      urls: state.urls,
+      books: state.books.items,
+      urls: state.urls.items,
     };
   },
   function mapDispatchToProps(dispatch) {

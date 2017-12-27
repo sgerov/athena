@@ -15,7 +15,7 @@ function composeWithApplyMiddlewares() {
     return compose(applyMiddleware(thunk));
 }
 
-const createMyStore = (urls: Array = [], books: Array = [], bookAsyncStatus: Object = {}, urlAsyncStatus: Object = {}, newBook: Object = {}, newUrl: Object = {}) => {
+const createMyStore = (urls: Object = { items: [], total: 0}, books: Object = { items: [], total: 0}, bookAsyncStatus: Object = {}, urlAsyncStatus: Object = {}, newBook: Object = {}, newUrl: Object = {}) => {
     return createStore(
       MainReducer, 
       { 
@@ -23,11 +23,13 @@ const createMyStore = (urls: Array = [], books: Array = [], bookAsyncStatus: Obj
         urls: urls, 
         bookAsyncStatus: {
           isFetching: false, 
-          didInvalidate: false 
+          didInvalidate: false,
+          page: 0,
         },
         urlAsyncStatus: {
           isFetching: false, 
-          didInvalidate: false 
+          didInvalidate: false,
+					page: 0,
         },
         newBook: {
           title: '',

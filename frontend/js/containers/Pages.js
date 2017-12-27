@@ -26,9 +26,17 @@ class Pages extends React.Component {
 
 	currentPage() {
 		if(this.props.type == "books") {
-			return this.props.booksPage
+			return this.props.booksPage || 1
 		} else {
-			return this.props.urlsPage
+			return this.props.urlsPage || 1
+		}
+	}
+
+	total() {
+		if(this.props.type == "books") {
+			return parseInt(this.props.booksTotal / 5) || 1
+		} else {
+			return parseInt(this.props.urlsTotal / 5) || 1
 		}
 	}
 
@@ -54,12 +62,12 @@ class Pages extends React.Component {
     return (
       <MobileStepper
         type="progress"
-        steps={10}
+        steps={this.total()}
         position="static"
-        activeStep={this.currentPage()}
+        activeStep={this.currentPage() - 1}
         className={classes.root}
         nextButton={
-          <Button dense onClick={this.handleNext} disabled={this.currentPage() === 10}>
+          <Button dense onClick={this.handleNext} disabled={this.currentPage() === this.total()}>
             Next
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
           </Button>
@@ -86,6 +94,8 @@ const PagesContainer = connect(
 		return {
 			urlsPage: state.urlAsyncStatus.page,
 			booksPage: state.bookAsyncStatus.page,
+			booksTotal: state.books.total,
+			urlsTotal: state.urls.total,
 		};
 	},
 	function mapDispatchToProps(dispatch) {

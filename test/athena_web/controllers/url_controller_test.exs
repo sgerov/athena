@@ -6,7 +6,7 @@ defmodule AthenaWeb.UrlControllerTest do
   test "GET /urls", %{conn: conn} do
     url = insert(:url)
 
-    conn = get conn, url_path(conn, :index)
+    conn = get conn, url_path(conn, :index, page: 1)
 
     assert json_response(conn, 200) == %{
       "urls" => [%{
@@ -14,7 +14,8 @@ defmodule AthenaWeb.UrlControllerTest do
         "preview" => url.preview,
         "title" => url.title,
         "inserted_at" => NaiveDateTime.to_iso8601(url.inserted_at),
-      }]
+      }],
+      "total" => 1
     }
   end
 

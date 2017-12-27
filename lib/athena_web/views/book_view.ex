@@ -1,9 +1,10 @@
 defmodule AthenaWeb.BookView do
   use AthenaWeb, :view
 
-  def render("index.json", %{books: books}) do
+  def render("index.json", %{books: books, total: total}) do
     %{
-      books: Enum.map(books, &book_json/1)
+      books: Enum.map(books, &book_json/1),
+      total: total
     }
   end
 

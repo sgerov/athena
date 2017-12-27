@@ -69,7 +69,7 @@ export const books = (
        })
 
 
-      return List(items)
+      return {items: List(items), total: action.payload.total}
     default:
       return state;
   }

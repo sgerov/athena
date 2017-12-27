@@ -6,7 +6,7 @@ defmodule AthenaWeb.BookControllerTest do
   test "GET /books", %{conn: conn} do
     book = insert(:book)
 
-    conn = get conn, book_path(conn, :index)
+    conn = get conn, book_path(conn, :index, page: 1)
 
     assert json_response(conn, 200) == %{
       "books" => [%{
@@ -16,7 +16,8 @@ defmodule AthenaWeb.BookControllerTest do
         "cover" => book.cover,
         "published_at" => Date.to_iso8601(book.published_at),
         "read_at" => Date.to_iso8601(book.read_at)
-      }]
+      }],
+     "total" => 1
     }
   end
 

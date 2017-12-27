@@ -5,8 +5,9 @@ defmodule AthenaWeb.BookController do
 
   def index(conn, %{"page" => page}) do
     books = paginated(Book, page, 5)
+    total = Repo.aggregate(Book, :count, :id)
 
-    render conn, books: books
+    render conn, books: books, total: total
   end
 
   def create(conn, %{"title" => title, "author" => author, "comment" => comment, "cover" => cover, "published_at" => published_at_str, "read_at" => read_at_str}) do

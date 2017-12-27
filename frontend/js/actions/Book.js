@@ -23,6 +23,7 @@ export const receiveBooks = (json) => {
     type: RECEIVE_BOOKS,
     payload: { 
       books: json.books,
+			total: json.total,
       receivedAt: Date.now()
     }
   }
