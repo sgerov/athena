@@ -5,6 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import Book from './Book'
 import Url from './Url'
 import Title from './Title'
+import NewBook from '../containers/NewBook'
 
 const styles = theme => ({
 	root: {
@@ -47,10 +48,13 @@ function ListBooks(props) {
 					<Grid item xs={12} sm={6}>
 						<Title type="urls" title="Memory retention" description="Online resources on which I practice retention"/>
 						{renderUrls}
+						<br />
 					</Grid>
 					<Grid item xs={12} sm={6}>
 						<Title type="books" title="Books" description="My career related reading list along with impressions"/>
 		        {renderBooks}
+						<br />
+						<NewBook />
 					</Grid>
 				</Grid>
 			</div>

@@ -76,7 +76,7 @@ function Url(props) {
         <ExpansionPanelActions>
           <div className={classes.linear}>
             <Tooltip id="tooltip-icon" title="How much I retained from first read" placement="bottom">
-              <LinearProgress mode="determinate" value={score} />
+							<LinearProgress mode="determinate" value={score} color="accent"/>
             </Tooltip>
           </div>
           <Button dense href={url}>

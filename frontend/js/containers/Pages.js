@@ -75,7 +75,7 @@ class Pages extends React.Component {
         backButton={
           <Button dense onClick={this.handleBack} disabled={this.currentPage() === 1}>
             {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Back
+            Prev
           </Button>
         }
       />
