@@ -1,68 +1,133 @@
-import React, { Component } from "react";
+import React from 'react';
 import { connect } from "react-redux";
 import { urlAutocomplete, urlChange, addUrl } from "../actions/";
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from 'material-ui/Dialog';
 
-class NewUrl extends Component {
-  constructor(props) {
-    super(props)
+class FormDialog extends React.Component {
+	constructor(props) {
+	  super(props)
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleAutocomplete = this.handleAutocomplete.bind(this);
+		this.handleAutocomplete = this.handleAutocomplete.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleClickOpen = this.handleClickOpen.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+
+		this.state = {
+			open: false,
+		};
   }
 
-  handleChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  handleClickOpen() {
+    this.setState({ open: true });
+  };
 
-    this.props.urlChange(name, value)
-  }
+  handleClose() {
+    this.setState({ open: false });
+  };
 
-  handleAutocomplete(event) {
-    this.props.urlAutocomplete(event.target.value)
-  }
+	handleAutocomplete(event) {
+		this.props.urlAutocomplete(event.target.value)
+	}
 
-  handleSubmit(event) {
-    this.props.addUrl(this.props.url)
-    event.preventDefault()
-  }
+	handleChange(event) {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const name = target.name;
+
+		this.props.urlChange(name, value)
+	}
+
+	handleSubmit(event) {
+		this.props.addUrl(this.props.url)
+		this.setState({ open: false })
+	}
 
   render() {
-    const { url } = this.props
+		const { url } = this.props
+
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-        <input type="text" name="preview" onChange={this.handleChange} value={url.preview}/>
-        <input type="text" name="title" onChange={this.handleChange} value={url.title} />
-        <input type="text" name="url" onChange={this.handleChange} value={url.url} />
-        <input type="text" onChange={this.handleAutocomplete} />
-        <input type="submit" value="Send" />
-        </form>
+        <Button raised onClick={this.handleClickOpen}>Add url</Button>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Add Url</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+							Enter the url details below
+            </DialogContentText>
+						<TextField
+							margin="dense"
+							id="url"
+							label="Url"
+							type="text"
+							fullWidth
+							onChange={this.handleAutocomplete}
+						/>
+            <TextField
+              margin="dense"
+              id="title"
+							value={url.title}
+              label="Title"
+              type="text"
+              fullWidth
+							onChange={this.handleChange}
+            />
+						<TextField
+							margin="dense"
+							id="preview"
+							value={url.preview}
+							label="Preview"
+							type="text"
+							fullWidth
+							onChange={this.handleChange}
+						/>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="secondary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleSubmit} color="secondary">
+              Add
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
-    )
+    );
   }
 }
 
 export const NewUrlContainer = connect(
-  function mapStateToProps(state) {
-    return {
-      url: state.newUrl
-    };
-  },
-  function mapDispatchToProps(dispatch) {
-    return {
-      urlAutocomplete: url => {
-        dispatch(urlAutocomplete(url))
-      },
-      urlChange: (attr, value) => {
-        dispatch(urlChange(attr, value))
-      },
-      addUrl: url => {
-        dispatch(addUrl(url));
-      },
-    };
+	function mapStateToProps(state) {
+		return {
+			url: state.newUrl
+		};
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			urlAutocomplete: url => {
+				dispatch(urlAutocomplete(url))
+			},
+			urlChange: (attr, value) => {
+				dispatch(urlChange(attr, value))
+			},
+			addUrl: url => {
+				dispatch(addUrl(url));
+			},
+		};
   }
-)(NewUrl);
+)(FormDialog);
 
 export default NewUrlContainer;

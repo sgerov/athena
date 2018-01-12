@@ -17,7 +17,7 @@ function PaperSheet(props) {
   const { classes, title, description, type } = props;
   return (
     <div>
-      <Paper className={classes.root} elevation={4}>
+      <Paper className={classes.root} elevation={4} square={true}>
         <Typography type="headline" component="h3" align="center">
 					{ title }
         </Typography>
@@ -25,8 +25,8 @@ function PaperSheet(props) {
 					{ description }
         </Typography>
 				<br />
-				<Pages type={type}/>
       </Paper>
+      <Pages type={type}/>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Book from './Book'
 import Url from './Url'
 import Title from './Title'
 import NewBook from '../containers/NewBook'
+import NewUrl from '../containers/NewUrl'
 
 const styles = theme => ({
 	root: {
@@ -19,7 +20,7 @@ const styles = theme => ({
 	},
 });
 
-function ListBooks(props) {
+function MainList(props) {
     const { urls, books, classes } = props;
 
 		const renderBooks = books.map((book, i) => {
@@ -46,12 +47,13 @@ function ListBooks(props) {
 	  	<div className="messages-container">
 				<Grid container spacing={24}>
 					<Grid item xs={12} sm={6}>
-						<Title type="urls" title="Memory retention" description="Online resources on which I practice retention"/>
+						<Title type="urls" title="Memory retention" description="Online resources for memory retention practice"/>
 						{renderUrls}
 						<br />
+						<NewUrl />
 					</Grid>
 					<Grid item xs={12} sm={6}>
-						<Title type="books" title="Books" description="My career related reading list along with impressions"/>
+						<Title type="books" title="Books" description="My reading list along with impressions"/>
 		        {renderBooks}
 						<br />
 						<NewBook />
@@ -61,4 +63,4 @@ function ListBooks(props) {
 		)
 }
 
-export default withStyles(styles)(ListBooks);
+export default withStyles(styles)(MainList);

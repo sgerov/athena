@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ListBooks from "../components/ListBooks";
+import MainList from "../components/MainList";
 import Toolbar from "../components/Toolbar";
 import { fetchBooks, fetchUrls } from "../actions/";
 
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <Toolbar />
-				<ListBooks books={books} urls={urls} />
+				<MainList books={books} urls={urls} />
       </div>
     );
   }

@@ -34,9 +34,9 @@ class Pages extends React.Component {
 
 	total() {
 		if(this.props.type == "books") {
-			return parseInt(this.props.booksTotal / 5) || 1
+			return Math.ceil(this.props.booksTotal / 5) || 1
 		} else {
-			return parseInt(this.props.urlsTotal / 5) || 1
+			return Math.ceil(this.props.urlsTotal / 5) || 1
 		}
 	}
 
