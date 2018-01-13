@@ -51,7 +51,7 @@ export const fetchUrls = (page = 1) => {
   return (dispatch) => {
     dispatch(requestUrls(page))
 
-    return fetch(`http://localhost:4000/api/urls?page=${page}`)
+    return fetch(`/api/urls?page=${page}`)
       .then(
         response => response.json(),
         error => console.log('An error occurred.', error)
@@ -66,7 +66,7 @@ export const ADD_URL = 'ADD_URL'
 
 export const addUrl = (url) => {
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/urls`, {
+    return fetch(`/api/urls`, {
       method: "post",
       headers: {
         'Accept': 'application/json',
@@ -94,7 +94,7 @@ export const URL_AUTOCOMPLETE = 'URL_AUTOCOMPLETE'
 
 export const urlAutocomplete = (url) => {
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/urls/autocomplete?url=${url}`)
+    return fetch(`/api/urls/autocomplete?url=${url}`)
       .then(
         response => response.json(),
         error => console.log('An error occurred.', error)

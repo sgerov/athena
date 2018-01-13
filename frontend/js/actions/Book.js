@@ -47,7 +47,7 @@ export const fetchBooks = (page = 1) => {
   return (dispatch) => {
     dispatch(requestBooks(page))
 
-    return fetch(`http://localhost:4000/api/books?page=${page}`)
+    return fetch(`/api/books?page=${page}`)
       .then(
         response => response.json(),
         error => console.log('An error occurred.', error)
@@ -62,7 +62,7 @@ export const ADD_BOOK = 'ADD_BOOK'
 
 export const addBook = (book) => {
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/books`, {
+    return fetch(`/api/books`, {
       method: "post",
       headers: {
         'Accept': 'application/json',
@@ -91,7 +91,7 @@ export const BOOK_AUTOCOMPLETE = 'BOOK_AUTOCOMPLETE'
 
 export const bookAutocomplete = (url) => {
   return (dispatch) => {
-    return fetch(`http://localhost:4000/api/books/autocomplete?url=${url}`)
+    return fetch(`/api/books/autocomplete?url=${url}`)
       .then(
         response => response.json(),
         error => console.log('An error occurred.', error)
