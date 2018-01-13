@@ -54,7 +54,7 @@ const styles = theme => ({
 });
 
 function Url(props) {
-  const { classes, title, url, preview, score } = props;
+  const { classes, title, url, preview, score, paragraph } = props;
 
   return (
     <div className={classes.root}>
@@ -68,7 +68,8 @@ function Url(props) {
           </div>
           <div className={classes.helper}>
             <Typography type="caption">
-              - missing description -
+              {paragraph}
+              ...
             </Typography>
           </div>
         </ExpansionPanelDetails>

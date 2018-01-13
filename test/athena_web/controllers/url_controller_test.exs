@@ -20,7 +20,7 @@ defmodule AthenaWeb.UrlControllerTest do
   end
 
   test "POST /urls", %{conn: conn} do
-    params = %{ "url" => "http://www.url.com", "preview" => "http://url.com/ha.img", "title" => "Latest article" }
+    params = %{ "url" => "http://www.url.com", "preview" => "http://url.com/ha.img", "title" => "Latest article", "paragraph" => "this is the first paragraph" }
 
     conn |> post(url_path(conn, :create), params) |> json_response(201)
   end
@@ -34,7 +34,8 @@ defmodule AthenaWeb.UrlControllerTest do
 
       assert json_response(conn, 200) == %{
         "images" => [],
-        "title" => ""
+        "title" => "",
+        "paragraph" => ""
       }
     end
   end

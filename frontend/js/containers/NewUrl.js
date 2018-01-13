@@ -85,6 +85,15 @@ class FormDialog extends React.Component {
               fullWidth
 							onChange={this.handleChange}
             />
+            <TextField
+              margin="dense"
+              id="paragraph"
+              value={url.paragraph}
+              label="First paragraph"
+              type="text"
+              fullWidth
+              onChange={this.handleChange}
+            />
 						<TextField
 							margin="dense"
 							id="preview"

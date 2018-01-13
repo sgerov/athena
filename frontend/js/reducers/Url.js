@@ -18,6 +18,7 @@ export const newUrl = (
     title: '',
     url: '',
     preview: '',
+    paragraph: '',
     images: [],
   },
   action: { type: string, payload: Object }
@@ -63,6 +64,7 @@ export const urls = (
           title: url.title,
           url: url.url,
           preview: url.preview,
+          paragraph: url.paragraph,
           score: parseInt(url.score || 0),
         })
        })

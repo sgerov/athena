@@ -12,8 +12,8 @@ defmodule AthenaWeb.UrlController do
     render conn, urls: urls, total: total
   end
 
-  def create(conn, %{"url" => url, "preview" => preview, "title" => title }) do
-    u = Url.changeset(%Url{}, %{url: url, preview: preview, title: title})
+  def create(conn, %{"url" => url, "preview" => preview, "title" => title, "paragraph" => paragraph }) do
+    u = Url.changeset(%Url{}, %{url: url, preview: preview, title: title, paragraph: paragraph})
     Repo.insert!(u)
 
     conn |> put_status(:created) |> json(%{})
@@ -24,10 +24,12 @@ defmodule AthenaWeb.UrlController do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         title = body |> Floki.find("title") |> Floki.text
         images = body |> Floki.attribute("img", "src")
+        paragraph = body |> Floki.find("p") |> Floki.text
 
         conn |> put_status(200) |> json(%{
           title: title,
-          images: images
+          images: images,
+          paragraph: paragraph
         })
       {:ok, %HTTPoison.Response{status_code: status_code}} ->
         conn |> put_status(status_code) |> json(%{})

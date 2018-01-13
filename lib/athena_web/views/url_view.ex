@@ -13,6 +13,7 @@ defmodule AthenaWeb.UrlView do
       url: url.url,
       inserted_at: url.inserted_at,
       preview: url.preview,
+      paragraph: url.paragraph,
       title: url.title
     }
   end

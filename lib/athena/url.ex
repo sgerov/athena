@@ -11,6 +11,7 @@ defmodule Athena.Url do
     field :summary, :string
     field :score, :integer
     field :read_time_seconds, :integer
+    field :paragraph, :string
 
     timestamps()
   end
@@ -18,7 +19,7 @@ defmodule Athena.Url do
   @doc false
   def changeset(%Url{} = url, attrs) do
     url
-    |> cast(attrs, [:url, :preview, :title, :summary, :score, :read_time_seconds])
+    |> cast(attrs, [:url, :preview, :title, :summary, :score, :read_time_seconds, :paragraph])
     |> validate_required([:url, :preview, :title])
   end
 end

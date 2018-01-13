@@ -39,6 +39,7 @@ function MainList(props) {
         title={url.title}
         url={url.url}
         preview={url.preview}
+        paragraph={(url.paragraph || "").substr(0, 220)}
         score={url.score}
       />
 		});
