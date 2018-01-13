@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { urlAutocomplete, urlChange, addUrl } from "../actions/";
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
-import Input, { InputLabel } from 'material-ui/Input';
+import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Dialog, {
   DialogActions,
@@ -13,18 +13,18 @@ import Dialog, {
 } from 'material-ui/Dialog';
 
 class FormDialog extends React.Component {
-	constructor(props) {
-	  super(props)
+  constructor(props) {
+    super(props)
 
-		this.handleAutocomplete = this.handleAutocomplete.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleClickOpen = this.handleClickOpen.bind(this);
-		this.handleClose = this.handleClose.bind(this);
+    this.handleAutocomplete = this.handleAutocomplete.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
 
-		this.state = {
-			open: false,
-		};
+    this.state = {
+      open: false,
+    };
   }
 
   handleClickOpen() {
@@ -35,25 +35,25 @@ class FormDialog extends React.Component {
     this.setState({ open: false });
   };
 
-	handleAutocomplete(event) {
-		this.props.urlAutocomplete(event.target.value)
-	}
+  handleAutocomplete(event) {
+    this.props.urlAutocomplete(event.target.value)
+  }
 
-	handleChange(event) {
-		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const name = target.name;
+  handleChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
-		this.props.urlChange(name, value)
-	}
+    this.props.urlChange(name, value)
+  }
 
-	handleSubmit(event) {
-		this.props.addUrl(this.props.url)
-		this.setState({ open: false })
-	}
+  handleSubmit(event) {
+    this.props.addUrl(this.props.url)
+    this.setState({ open: false })
+  }
 
   render() {
-		const { url } = this.props
+    const { url } = this.props
 
     return (
       <div>
@@ -63,27 +63,26 @@ class FormDialog extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Add Url</DialogTitle>
+          <DialogTitle id="form-dialog-title">Add online resource</DialogTitle>
           <DialogContent>
             <DialogContentText>
-							Enter the url details below
             </DialogContentText>
-						<TextField
-							margin="dense"
-							id="url"
-							label="Url"
-							type="text"
-							fullWidth
-							onChange={this.handleAutocomplete}
-						/>
+            <TextField
+              margin="dense"
+              id="url"
+              label="Url"
+              type="text"
+              fullWidth
+              onChange={this.handleAutocomplete}
+            />
             <TextField
               margin="dense"
               id="title"
-							value={url.title}
+              value={url.title}
               label="Title"
               type="text"
               fullWidth
-							onChange={this.handleChange}
+              onChange={this.handleChange}
             />
             <TextField
               margin="dense"
@@ -94,15 +93,17 @@ class FormDialog extends React.Component {
               fullWidth
               onChange={this.handleChange}
             />
-						<TextField
-							margin="dense"
-							id="preview"
-							value={url.preview}
-							label="Preview"
-							type="text"
-							fullWidth
-							onChange={this.handleChange}
-						/>
+            <FormControl
+              aria-describedby="weight-helper-text"
+            >
+              <Input
+                id="preview"
+                value={url.preview}
+                onChange={this.handleChange}
+                endAdornment={<InputAdornment position="end"><img src={url.preview} width="200" /></InputAdornment>}
+              />
+              <FormHelperText id="weight-helper-text">Preview</FormHelperText>
+            </FormControl>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="secondary">
@@ -119,23 +120,23 @@ class FormDialog extends React.Component {
 }
 
 export const NewUrlContainer = connect(
-	function mapStateToProps(state) {
-		return {
-			url: state.newUrl
-		};
-	},
-	function mapDispatchToProps(dispatch) {
-		return {
-			urlAutocomplete: url => {
-				dispatch(urlAutocomplete(url))
-			},
-			urlChange: (attr, value) => {
-				dispatch(urlChange(attr, value))
-			},
-			addUrl: url => {
-				dispatch(addUrl(url));
-			},
-		};
+  function mapStateToProps(state) {
+    return {
+      url: state.newUrl
+    };
+  },
+  function mapDispatchToProps(dispatch) {
+    return {
+      urlAutocomplete: url => {
+        dispatch(urlAutocomplete(url))
+      },
+      urlChange: (attr, value) => {
+        dispatch(urlChange(attr, value))
+      },
+      addUrl: url => {
+        dispatch(addUrl(url));
+      },
+    };
   }
 )(FormDialog);
 
