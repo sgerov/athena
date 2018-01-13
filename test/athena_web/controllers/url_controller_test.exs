@@ -10,6 +10,7 @@ defmodule AthenaWeb.UrlControllerTest do
 
     assert json_response(conn, 200) == %{
       "urls" => [%{
+        "paragraph" => url.paragraph,
         "url" => url.url,
         "preview" => url.preview,
         "title" => url.title,
