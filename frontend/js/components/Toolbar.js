@@ -10,6 +10,7 @@ import GithubCircle from 'mdi-material-ui/GithubCircle'
 import TwitterCircle from 'mdi-material-ui/TwitterCircle'
 import Medium from 'mdi-material-ui/Medium'
 import YoutubePlay from 'mdi-material-ui/YoutubePlay'
+import LinkedinBox from 'mdi-material-ui/LinkedinBox'
 import Avatar from 'material-ui/Avatar';
 
 const styles = {
@@ -32,23 +33,36 @@ function SimpleAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-					<Avatar alt="Remy Sharp" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANmAAAAJDEzMjA2ZjVkLWQ2NzYtNDRhNC1hMDU4LWYzZTg1YWRlYzVlNQ.jpg" />
+          <Avatar alt="Remy Sharp" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANmAAAAJDEzMjA2ZjVkLWQ2NzYtNDRhNC1hMDU4LWYzZTg1YWRlYzVlNQ.jpg" />
 
           <Typography type="title" color="inherit" className={classes.flex}>
-           Sava Gerov
+            Sava Gerov
           </Typography>
-      <IconButton aria-label="Add an alarm">
-				<GithubCircle />
-      </IconButton>
-      <IconButton aria-label="Add an alarm">
-				<TwitterCircle />
-      </IconButton>
-      <IconButton aria-label="Add an alarm">
-				<Medium />
-      </IconButton>
-			<IconButton aria-label="Add an alarm">
-				<YoutubePlay />
-			</IconButton>
+          <a href="https://github.com/savayg" target="_blank">
+            <IconButton>
+              <GithubCircle />
+            </IconButton>
+          </a>
+          <a href="https://twitter.com/sgerov" target="_blank">
+            <IconButton>
+              <TwitterCircle />
+            </IconButton>
+          </a>
+          <a href="https://linkedin.com/in/savagerov/" target="_blank">
+            <IconButton>
+              <LinkedinBox />
+            </IconButton>
+          </a>
+          <a href="https://medium.com/@sgerov" target="_blank">
+            <IconButton>
+              <Medium />
+            </IconButton>
+          </a>
+          <a href="https://www.youtube.com/channel/UC990Eo29-pxZrARW4UErVWg" target="_blank">
+            <IconButton>
+              <YoutubePlay />
+            </IconButton>
+          </a>
         </Toolbar>
       </AppBar>
     </div>

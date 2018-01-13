@@ -54,7 +54,7 @@ const styles = theme => ({
 });
 
 function Url(props) {
-  const { classes, title, url, preview, score, paragraph } = props;
+  const { classes, title, url, preview, score, paragraph, summary } = props;
 
   return (
     <div className={classes.root}>
@@ -76,7 +76,7 @@ function Url(props) {
         <Divider />
         <ExpansionPanelActions>
           <div className={classes.linear}>
-            <Tooltip id="tooltip-icon" title="How much I retained from first read" placement="bottom">
+            <Tooltip id="tooltip-icon" title={summary} placement="bottom">
 							<LinearProgress mode="determinate" value={score} color="accent"/>
             </Tooltip>
           </div>

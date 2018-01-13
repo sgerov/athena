@@ -108,18 +108,28 @@ class FormDialog extends React.Component {
               }}
               onChange={this.handleChange}
             />
-						<TextField
-							margin="dense"
-							id="published_at"
+            <TextField
+              margin="dense"
+              id="published_at"
               name="published_at"
-							label="Published at"
-							type="date"
-							fullWidth
-							InputLabelProps={{
-								shrink: true,
-							}}
-							onChange={this.handleChange}
-						/>
+              label="Published at"
+              type="date"
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={this.handleChange}
+            />
+            <TextField
+              margin="dense"
+              id="comment"
+              name="comment"
+              label="Book comment"
+              multiline
+              rowsMax="4"
+              fullWidth
+              onChange={this.handleChange}
+            />
             <FormControl
               aria-describedby="weight-helper-text"
             >

@@ -71,7 +71,7 @@ export const addBook = (book) => {
       body: JSON.stringify({
         title: book.title,
         author: book.author,
-        comment: "TODO",
+        comment: book.comment,
         cover: book.cover,
         published_at: book.published_at,
         read_at: book.read_at,

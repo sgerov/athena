@@ -1,19 +1,17 @@
 defmodule AthenaWeb.UrlController do
   use AthenaWeb, :controller
 
-  import Ecto.Query, only: [from: 2]
-
   alias Athena.{Repo, Url}
 
   def index(conn, %{"page" => page}) do
-    urls = paginated(Url, page, 5)
+    urls = paginated(Url, page, 5, :inserted_at)
     total = Repo.aggregate(Url, :count, :id)
 
     render conn, urls: urls, total: total
   end
 
-  def create(conn, %{"url" => url, "preview" => preview, "title" => title, "paragraph" => paragraph }) do
-    u = Url.changeset(%Url{}, %{url: url, preview: preview, title: title, paragraph: paragraph})
+  def create(conn, %{"url" => url, "preview" => preview, "title" => title, "paragraph" => paragraph, "summary" => summary }) do
+    u = Url.changeset(%Url{}, %{url: url, preview: preview, title: title, paragraph: paragraph, summary: summary})
     Repo.insert!(u)
 
     conn |> put_status(:created) |> json(%{})

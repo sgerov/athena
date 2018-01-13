@@ -4,7 +4,7 @@ defmodule AthenaWeb.BookController do
   alias Athena.{Repo, Book}
 
   def index(conn, %{"page" => page}) do
-    books = paginated(Book, page, 5)
+    books = paginated(Book, page, 5, :read_at)
     total = Repo.aggregate(Book, :count, :id)
 
     render conn, books: books, total: total

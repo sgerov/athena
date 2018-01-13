@@ -18,7 +18,8 @@ export const newBook = (
     author: '',
     cover: '',
     published_at: '',
-    read_at: ''
+    read_at: '',
+    comment: ''
   },
   action: { type: string, payload: Object }
 ) => {

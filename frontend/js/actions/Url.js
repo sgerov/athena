@@ -77,6 +77,7 @@ export const addUrl = (url) => {
         url: url.url,
         preview: url.preview,
         paragraph: url.paragraph,
+        summary: url.summary,
       })
     })
       .then(

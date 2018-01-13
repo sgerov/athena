@@ -99,6 +99,16 @@ class FormDialog extends React.Component {
               fullWidth
               onChange={this.handleChange}
             />
+            <TextField
+              margin="dense"
+              id="summary"
+              name="summary"
+              value={url.summary}
+              label="Summary"
+              type="text"
+              fullWidth
+              onChange={this.handleChange}
+            />
             <FormControl
               aria-describedby="weight-helper-text"
             >
