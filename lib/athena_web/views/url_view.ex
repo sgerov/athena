@@ -15,7 +15,8 @@ defmodule AthenaWeb.UrlView do
       preview: url.preview,
       paragraph: url.paragraph,
       summary: url.summary,
-      title: url.title
+      title: url.title,
+      score: url.score
     }
   end
 end

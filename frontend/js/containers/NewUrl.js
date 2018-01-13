@@ -81,6 +81,26 @@ class FormDialog extends React.Component {
             />
             <TextField
               margin="dense"
+              id="summary"
+              name="summary"
+              value={url.summary}
+              label="Summary"
+              type="text"
+              fullWidth
+              onChange={this.handleChange}
+            />
+            <TextField
+              margin="dense"
+              id="score"
+              name="score"
+              value={url.score}
+              label="Score"
+              type="number"
+              fullWidth
+              onChange={this.handleChange}
+            />
+            <TextField
+              margin="dense"
               id="title"
               name="title"
               value={url.title}
@@ -95,16 +115,6 @@ class FormDialog extends React.Component {
               name="paragraph"
               value={url.paragraph}
               label="First paragraph"
-              type="text"
-              fullWidth
-              onChange={this.handleChange}
-            />
-            <TextField
-              margin="dense"
-              id="summary"
-              name="summary"
-              value={url.summary}
-              label="Summary"
               type="text"
               fullWidth
               onChange={this.handleChange}

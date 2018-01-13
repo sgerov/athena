@@ -10,14 +10,14 @@ defmodule AthenaWeb.UrlController do
     render conn, urls: urls, total: total
   end
 
-  def create(conn, %{"url" => url, "preview" => preview, "title" => title, "paragraph" => paragraph, "summary" => summary }) do
-    u = Url.changeset(%Url{}, %{url: url, preview: preview, title: title, paragraph: paragraph, summary: summary})
+  def create(conn, %{"url" => url, "preview" => preview, "title" => title, "paragraph" => paragraph, "summary" => summary, "score" => score }) do
+    u = Url.changeset(%Url{}, %{url: url, preview: preview, title: title, paragraph: paragraph, summary: summary, score: score})
     Repo.insert!(u)
 
     conn |> put_status(:created) |> json(%{})
   end
 
-  def autocomplete(conn, %{"url" => url }) do
+ def autocomplete(conn, %{"url" => url }) do
     case HTTPoison.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         title = body |> Floki.find("title") |> Floki.text

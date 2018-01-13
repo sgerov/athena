@@ -19,7 +19,7 @@ export const newUrl = (
     url: '',
     preview: '',
     paragraph: '',
-    summary: '',
+    summary: 'No summary provided',
     images: [],
   },
   action: { type: string, payload: Object }
