@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bookAutocomplete, bookChange, addBook } from "../actions/";
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
-import Input, { InputLabel } from 'material-ui/Input';
+import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Dialog, {
   DialogActions,
@@ -66,11 +66,12 @@ class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Add Book</DialogTitle>
           <DialogContent>
             <DialogContentText>
-							Enter the book details below
+              Paste Amazon link to the book for autocomplete
             </DialogContentText>
 						<TextField
 							margin="dense"
 							id="url"
+              name="url"
 							label="Amazon Url"
 							type="text"
 							fullWidth
@@ -79,6 +80,7 @@ class FormDialog extends React.Component {
             <TextField
               margin="dense"
               id="title"
+              name="title"
 							value={book.title}
               label="Title"
               type="text"
@@ -88,24 +90,28 @@ class FormDialog extends React.Component {
 						<TextField
 							margin="dense"
 							id="author"
+              name="author"
 							value={book.author}
 							label="Author"
 							type="text"
 							fullWidth
 							onChange={this.handleChange}
 						/>
-						<TextField
-							margin="dense"
-							id="cover"
-							value={book.cover}
-							label="Cover Url"
-							type="text"
-							fullWidth
-							onChange={this.handleChange}
-						/>
+            <TextField
+              margin="dense"
+              name="read_at"
+              label="Read at"
+              type="date"
+              fullWidth
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={this.handleChange}
+            />
 						<TextField
 							margin="dense"
 							id="published_at"
+              name="published_at"
 							label="Published at"
 							type="date"
 							fullWidth
@@ -114,21 +120,22 @@ class FormDialog extends React.Component {
 							}}
 							onChange={this.handleChange}
 						/>
+            <FormControl
+              aria-describedby="weight-helper-text"
+            >
+              <Input
+                id="cover"
+                name="cover"
+                value={book.cover}
+                onChange={this.handleChange}
+                endAdornment={<InputAdornment position="end"><img src={book.cover} height="150" /></InputAdornment>}
+              />
+              <FormHelperText id="weight-helper-text">Book cover</FormHelperText>
+            </FormControl>
 						<FormControl disabled>
 							<Input type="text" name="published_at_guess" value={book.published_at} onChange={this.handleChange} />
-							<FormHelperText>Guess</FormHelperText>
+							<FormHelperText>Published at scraper guess</FormHelperText>
 						</FormControl>
-						<TextField
-							margin="dense"
-							id="read_at"
-							label="Read at"
-							type="date"
-							fullWidth
-							InputLabelProps={{
-								shrink: true,
-							}}
-							onChange={this.handleChange}
-						/>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="secondary">

@@ -66,10 +66,14 @@ class FormDialog extends React.Component {
           <DialogTitle id="form-dialog-title">Add online resource</DialogTitle>
           <DialogContent>
             <DialogContentText>
+              Paste the url below for autocomplete
+            </DialogContentText>
+            <DialogContentText>
             </DialogContentText>
             <TextField
               margin="dense"
               id="url"
+              name="url"
               label="Url"
               type="text"
               fullWidth
@@ -78,6 +82,7 @@ class FormDialog extends React.Component {
             <TextField
               margin="dense"
               id="title"
+              name="title"
               value={url.title}
               label="Title"
               type="text"
@@ -87,6 +92,7 @@ class FormDialog extends React.Component {
             <TextField
               margin="dense"
               id="paragraph"
+              name="paragraph"
               value={url.paragraph}
               label="First paragraph"
               type="text"
@@ -98,6 +104,7 @@ class FormDialog extends React.Component {
             >
               <Input
                 id="preview"
+                name="preview"
                 value={url.preview}
                 onChange={this.handleChange}
                 endAdornment={<InputAdornment position="end"><img src={url.preview} width="200" /></InputAdornment>}
