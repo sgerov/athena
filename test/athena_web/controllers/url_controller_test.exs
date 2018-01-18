@@ -17,6 +17,7 @@ defmodule AthenaWeb.UrlControllerTest do
         "preview" => url.preview,
         "title" => url.title,
         "inserted_at" => NaiveDateTime.to_iso8601(url.inserted_at),
+        "id" => url.id,
       }],
       "total" => 1
     }
@@ -26,6 +27,12 @@ defmodule AthenaWeb.UrlControllerTest do
     params = %{ "url" => "http://www.url.com", "preview" => "http://url.com/ha.img", "title" => "Latest article", "paragraph" => "this is the first paragraph", "score" => "50", "summary" => "Summaryyy!" }
 
     conn |> post(url_path(conn, :create), params) |> json_response(201)
+  end
+
+  test "DELETE /url/:id", %{conn: conn} do
+    url = insert(:url)
+
+    conn |> delete(url_path(conn, :delete, url.id)) |> json_response(204)
   end
 
   test "GET /urls/autocomplete", %{conn: conn} do

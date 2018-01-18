@@ -54,7 +54,7 @@ const styles = theme => ({
 });
 
 function Url(props) {
-  const { classes, title, url, preview, score, paragraph, summary } = props;
+  const { classes, id, title, url, preview, score, paragraph, summary, onDelete } = props;
 
   return (
     <div className={classes.root}>
@@ -70,6 +70,11 @@ function Url(props) {
             <Typography type="caption">
               {paragraph}
               ...
+              <br />
+              <br />
+              <Button raised color="accent" onClick={() => onDelete(id)}>
+                Delete
+              </Button>
             </Typography>
           </div>
         </ExpansionPanelDetails>

@@ -17,7 +17,13 @@ defmodule AthenaWeb.UrlController do
     conn |> put_status(:created) |> json(%{})
   end
 
- def autocomplete(conn, %{"url" => url }) do
+  def delete(conn, %{"id" => id}) do
+    Url |> Repo.get(id) |> Repo.delete!
+
+    conn |> put_status(204) |> json(%{})
+  end
+
+  def autocomplete(conn, %{"url" => url }) do
     case HTTPoison.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         title = body |> Floki.find("title") |> Floki.text

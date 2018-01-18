@@ -26,7 +26,7 @@ defmodule AthenaWeb.Router do
     resources "/books", BookController, only: [:index, :create]
     get "/books/autocomplete", BookController, :autocomplete
 
-    resources "/urls", UrlController, only: [:index, :create]
+    resources "/urls", UrlController, only: [:index, :create, :delete]
     get "/urls/autocomplete", UrlController, :autocomplete
   end
 end

@@ -14,6 +14,7 @@ import {
 
 export const newUrl = (
   newUrl = {
+    id: 0,
     score: 0,
     title: '',
     url: '',
@@ -62,6 +63,7 @@ export const urls = (
     case RECEIVE_URLS:
       const items = action.payload.urls.map( url => {
         return new UrlType({ 
+          id: url.id,
           title: url.title,
           url: url.url,
           preview: url.preview,

@@ -21,7 +21,7 @@ const styles = theme => ({
 });
 
 function MainList(props) {
-    const { urls, books, classes } = props;
+    const { urls, books, classes, onDelete } = props;
 
 		const renderBooks = books.map((book, i) => {
       return <Book 
@@ -31,17 +31,20 @@ function MainList(props) {
         author={book.author} 
         published_at={book.published_at} 
         read_at={book.read_at} 
+        onDelete={onDelete}
       />
 		});
 
 		const renderUrls = urls.map((url, i) => {
       return <Url 
+        id={url.id}
         title={url.title}
         url={url.url}
         preview={url.preview}
         paragraph={(url.paragraph || "").substr(0, 220)}
         summary={url.summary}
         score={url.score}
+        onDelete={onDelete}
       />
 		});
 

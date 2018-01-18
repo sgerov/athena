@@ -10,6 +10,7 @@ defmodule AthenaWeb.UrlView do
 
   def url_json(url) do
     %{
+      id: url.id,
       url: url.url,
       inserted_at: url.inserted_at,
       preview: url.preview,

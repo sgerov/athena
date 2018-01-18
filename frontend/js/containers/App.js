@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainList from "../components/MainList";
 import Toolbar from "../components/Toolbar";
-import { fetchBooks, fetchUrls } from "../actions/";
+import { fetchBooks, fetchUrls, onDelete } from "../actions/";
 
 class App extends Component {
   componentWillMount() {
@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <Toolbar />
-				<MainList books={books} urls={urls} />
+        <MainList books={books} urls={urls} onDelete={this.props.onDelete} />
       </div>
     );
   }
@@ -36,6 +36,9 @@ const AppContainer = connect(
       },
       fetchUrls: () => {
         dispatch(fetchUrls());
+      },
+      onDelete: (id) => {
+        dispatch(onDelete(id));
       }
     };
   }

@@ -4,6 +4,7 @@ import { Record } from "immutable";
 
 export default class UrlType
     extends Record({
+      id: 0,
       title: "",
       score: 0,
       url: "",
@@ -12,6 +13,7 @@ export default class UrlType
       summary: "",
       images: [],
     }) {
+    id: number;
     title: string;
     url: string;
     preview: string;
