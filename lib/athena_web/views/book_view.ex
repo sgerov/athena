@@ -15,8 +15,8 @@ defmodule AthenaWeb.BookView do
       title: book.title,
       author: book.author,
       comment: book.comment,
-      published_at: book.published_at,
-      read_at: book.read_at,
+      published_at: book.published_at.year,
+      read_at: book.read_at.year,
     }
   end
 end
