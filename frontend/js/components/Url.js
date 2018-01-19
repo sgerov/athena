@@ -60,7 +60,7 @@ function Url(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>{title}</Typography>
+          <Typography className={classes.heading}>{(title || "").substr(0, 70)} ..</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           <div className={classes.column}>
