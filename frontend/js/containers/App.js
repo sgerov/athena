@@ -37,8 +37,8 @@ const AppContainer = connect(
       fetchUrls: () => {
         dispatch(fetchUrls());
       },
-      onDelete: (id) => {
-        dispatch(onDelete(id));
+      onDelete: (id, resource) => {
+        dispatch(onDelete(id, resource));
       }
     };
   }

@@ -49,7 +49,7 @@ const styles = theme => ({
 });
 
 function Book(props) {
-  const { classes, title, cover, author, published_at, read_at, comment } = props;
+  const { classes, title, cover, author, published_at, read_at, comment, id, onDelete } = props;
 
   return (
     <div className={classes.root}>
@@ -65,6 +65,11 @@ function Book(props) {
             <Typography type="caption">
               {comment}
             </Typography>
+            <br />
+            <br />
+            <Button raised color="accent" onClick={() => onDelete(id, "books")}>
+              Delete
+            </Button>
           </div>
         </ExpansionPanelDetails>
         <Divider />

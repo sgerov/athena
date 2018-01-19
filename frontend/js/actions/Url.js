@@ -106,25 +106,3 @@ export const urlAutocomplete = (url) => {
   }
 }
 
-export const ON_DELETE = 'ON_DELETE'
-
-export const onDelete = (id) => {
-  return (dispatch) => {
-    return fetch(`/api/urls/${id}`, {
-      method: "delete",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(
-        response => "",
-        error => console.log('An error occurred.', error)
-      )
-      .then((json) => {
-        dispatch(fetchUrls())
-      }
-      )
-  }
-}
-

@@ -14,6 +14,7 @@ import {
 
 export const newBook = (
   newBook = {
+    id: 0,
     title: '',
     author: '',
     cover: '',
@@ -60,6 +61,7 @@ export const books = (
     case RECEIVE_BOOKS:
       const items = action.payload.books.map( book => {
         return new BookType({ 
+          id: book.id,
           title: book.title,
           comment: book.comment,
           cover: book.cover,

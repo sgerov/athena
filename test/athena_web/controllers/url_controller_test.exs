@@ -29,7 +29,7 @@ defmodule AthenaWeb.UrlControllerTest do
     conn |> post(url_path(conn, :create), params) |> json_response(201)
   end
 
-  test "DELETE /url/:id", %{conn: conn} do
+  test "DELETE /urls/:id", %{conn: conn} do
     url = insert(:url)
 
     conn |> delete(url_path(conn, :delete, url.id)) |> json_response(204)

@@ -34,6 +34,12 @@ defmodule AthenaWeb.BookControllerTest do
     conn |> post(book_path(conn, :create), params) |> json_response(201)
   end
 
+  test "DELETE /books/:id", %{conn: conn} do
+    url = insert(:book)
+
+    conn |> delete(book_path(conn, :delete, url.id)) |> json_response(204)
+  end
+
   test "GET /books/amazon", %{conn: conn} do
     params = %{ "url" => "http://www.amazon.com/bookurl" }
     response = %HTTPoison.Response{status_code: 200, body: '{}'}

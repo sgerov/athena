@@ -10,6 +10,7 @@ defmodule AthenaWeb.BookView do
 
   def book_json(book) do
     %{
+      id: book.id,
       cover: book.cover,
       title: book.title,
       author: book.author,

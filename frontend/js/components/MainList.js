@@ -25,6 +25,7 @@ function MainList(props) {
 
 		const renderBooks = books.map((book, i) => {
       return <Book 
+        id={book.id} 
         title={book.title} 
         comment={book.comment} 
         cover={book.cover} 

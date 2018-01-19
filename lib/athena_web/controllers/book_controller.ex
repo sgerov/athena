@@ -20,6 +20,12 @@ defmodule AthenaWeb.BookController do
     conn |> put_status(:created) |> json(%{})
   end
 
+  def delete(conn, %{"id" => id}) do
+    Book |> Repo.get(id) |> Repo.delete!
+
+    conn |> put_status(204) |> json(%{})
+  end
+
   def autocomplete(conn, %{"url" => url }) do
     case HTTPoison.get(url) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->

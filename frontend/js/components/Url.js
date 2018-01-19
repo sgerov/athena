@@ -72,7 +72,7 @@ function Url(props) {
               ...
               <br />
               <br />
-              <Button raised color="accent" onClick={() => onDelete(id)}>
+              <Button raised color="accent" onClick={() => onDelete(id, "urls")}>
                 Delete
               </Button>
             </Typography>
