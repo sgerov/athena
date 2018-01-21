@@ -13,6 +13,18 @@ defmodule AthenaWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :unauthorized do
+    plug :fetch_session
+  end
+
+  pipeline :authorized do
+    plug :fetch_session
+    plug Guardian.Plug.Pipeline, module: Athena.Guardian,
+      error_handler: Athena.AuthErrorHandler
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
   scope "/", AthenaWeb do
     pipe_through :browser # Use the default browser stack
 
@@ -28,5 +40,20 @@ defmodule AthenaWeb.Router do
 
     resources "/urls", UrlController, only: [:index, :create, :delete]
     get "/urls/autocomplete", UrlController, :autocomplete
+
+    scope "/users" do
+      scope "/" do
+        pipe_through :unauthorized
+
+        post "/sign-in", UserController, :sign_in
+      end
+
+      scope "/" do
+        pipe_through :authorized
+
+        post "/sign-out", UserController, :sign_out
+        get "/me", UserController, :show
+      end
+    end
   end
 end

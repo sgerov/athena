@@ -22,6 +22,10 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :athena, Athena.Guardian,
+  issuer: "athena",
+  secret_key: "n9GTa8ISoWokzomj4ghpYshc7xp3NRSBM9haVgAsK8amH1FtR9diYXIxLn+jXHGt" 
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
