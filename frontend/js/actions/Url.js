@@ -72,6 +72,7 @@ export const addUrl = (url) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       body: JSON.stringify({
         title: url.title,
         url: url.url,

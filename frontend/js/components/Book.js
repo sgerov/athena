@@ -48,8 +48,16 @@ const styles = theme => ({
   },
 });
 
+function renderDeleteButton(props) {
+  if (props.currentUser.user_id) {
+    return <div><br /><br/><Button raised color="accent" onClick={() => props.onDelete(props.id, "books")}>
+      Delete
+      </Button></div>
+  }
+}
+
 function Book(props) {
-  const { classes, title, cover, author, published_at, read_at, comment, id, onDelete } = props;
+  const { classes, title, cover, author, published_at, read_at, comment } = props;
 
   return (
     <div className={classes.root}>
@@ -65,11 +73,7 @@ function Book(props) {
             <Typography type="caption">
               {comment}
             </Typography>
-            <br />
-            <br />
-            <Button raised color="accent" onClick={() => onDelete(id, "books")}>
-              Delete
-            </Button>
+            { renderDeleteButton(props) }
           </div>
         </ExpansionPanelDetails>
         <Divider />

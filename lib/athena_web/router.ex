@@ -26,19 +26,26 @@ defmodule AthenaWeb.Router do
   end
 
   scope "/", AthenaWeb do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser 
 
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
   scope "/api", AthenaWeb do
     pipe_through :api
 
-    resources "/books", BookController, only: [:index, :create, :delete]
+    scope "/" do
+      pipe_through :authorized
+
+      resources "/books", BookController, only: [:create, :delete]
+
+      resources "/urls", UrlController, only: [:create, :delete]
+    end
+
+    resources "/books", BookController, only: [:index]
     get "/books/autocomplete", BookController, :autocomplete
 
-    resources "/urls", UrlController, only: [:index, :create, :delete]
+    resources "/urls", UrlController, only: [:index]
     get "/urls/autocomplete", UrlController, :autocomplete
 
     scope "/users" do

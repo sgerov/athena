@@ -68,6 +68,7 @@ export const addBook = (book) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       body: JSON.stringify({
         title: book.title,
         author: book.author,

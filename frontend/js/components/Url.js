@@ -53,8 +53,16 @@ const styles = theme => ({
   },
 });
 
+function renderDeleteButton(props) {
+  if (props.currentUser.user_id) {
+    return <div><br /><br/><Button raised color="accent" onClick={() => props.onDelete(props.id, "urls")}>
+        Delete
+    </Button></div>
+  }
+}
+
 function Url(props) {
-  const { classes, id, title, url, preview, score, paragraph, summary, onDelete } = props;
+  const { classes, title, url, preview, score, paragraph, summary } = props;
 
   return (
     <div className={classes.root}>
@@ -70,11 +78,7 @@ function Url(props) {
             <Typography type="caption">
               {paragraph}
               ...
-              <br />
-              <br />
-              <Button raised color="accent" onClick={() => onDelete(id, "urls")}>
-                Delete
-              </Button>
+              { renderDeleteButton(props) }
             </Typography>
           </div>
         </ExpansionPanelDetails>
