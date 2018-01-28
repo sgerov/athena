@@ -7,7 +7,7 @@ import Url from './Url'
 import Title from './Title'
 import NewBook from '../containers/NewBook'
 import NewUrl from '../containers/NewUrl'
-import Login from '../containers/Login'
+import Pages from '../containers/Pages'
 
 const styles = theme => ({
   root: {
@@ -17,7 +17,6 @@ const styles = theme => ({
   paper: {
     padding: 16,
     textAlign: 'center',
-    color: theme.palette.text.secondary,
   },
 });
 
@@ -56,19 +55,20 @@ function MainList(props) {
     <div className="messages-container">
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
-          <Title type="urls" title="Memory retention" description="Online resources for memory retention practice"/>
+          <Title title="Memory retention" description="Daily readings collection tied to retention score"/>
           {renderUrls}
           <br />
+          <Pages type="urls"/>
           { currentUser.user_id ? <NewUrl /> : null }
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Title type="books" title="Books" description="My reading list along with impressions"/>
+          <Title title="Books" description="Reading list along with personal impressions"/>
           {renderBooks}
           <br /> 
+          <Pages type="books"/>
           { currentUser.user_id ? <NewBook /> : null }
         </Grid>
       </Grid>
-      <Login />
     </div>
   )
 }

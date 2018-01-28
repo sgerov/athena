@@ -49,7 +49,7 @@ class LoginDialog extends React.Component {
   render() {
     return (
       <div>
-        <Button raised onClick={this.handleClickOpen}>{this.props.currentUser.user_id ? 'Logout' : 'Login'}</Button>
+        <Button onClick={this.handleClickOpen}>{this.props.currentUser.user_id ? 'Logout' : 'Login'}</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -71,10 +71,10 @@ class LoginDialog extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} color="default">
               Cancel
             </Button>
-            <Button onClick={this.handleSubmit} color="primary">
+            <Button onClick={this.handleSubmit} color="default">
               Login
             </Button>
           </DialogActions>

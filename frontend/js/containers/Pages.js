@@ -7,6 +7,7 @@ import Button from 'material-ui/Button';
 import KeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
 import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight';
 import { fetchBooks, fetchUrls } from "../actions/";
+import Tooltip from 'material-ui/Tooltip';
 
 const styles = {
   root: {
@@ -60,25 +61,28 @@ class Pages extends React.Component {
     const { classes, theme } = this.props;
 
     return (
-      <MobileStepper
-        type="progress"
-        steps={this.total()}
-        position="static"
-        activeStep={this.currentPage() - 1}
-        className={classes.root}
-        nextButton={
-          <Button dense onClick={this.handleNext} disabled={this.currentPage() === this.total()}>
-            Next
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </Button>
-        }
-        backButton={
-          <Button dense onClick={this.handleBack} disabled={this.currentPage() === 1}>
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-            Prev
-          </Button>
-        }
-      />
+      <Tooltip id="tooltip-icon" title="Switch current page" placement="bottom">
+        <MobileStepper
+          type="progress"
+          steps={this.total()}
+          position="static"
+          activeStep={this.currentPage() - 1}
+          className={classes.root}
+          square={false}
+          nextButton={
+            <Button dense onClick={this.handleNext} disabled={this.currentPage() === this.total()}>
+              Next
+              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+            </Button>
+          }
+          backButton={
+            <Button dense onClick={this.handleBack} disabled={this.currentPage() === 1}>
+              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+              Prev
+            </Button>
+          }
+        />
+      </Tooltip>
     );
   }
 }

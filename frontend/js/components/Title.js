@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
-import Pages from '../containers/Pages'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -14,19 +13,18 @@ const styles = theme => ({
 });
 
 function PaperSheet(props) {
-  const { classes, title, description, type } = props;
+  const { classes, title, description } = props;
   return (
     <div>
-      <Paper className={classes.root} elevation={4} square={true}>
-        <Typography type="headline" component="h3" align="center">
+      <div className={classes.root} elevation={4} square={true}>
+        <Typography type="headline" component="h3" align="center" color="inherit">
 					{ title }
         </Typography>
-        <Typography component="p" align="center">
+        <Typography component="p" align="center" color="inherit">
 					{ description }
         </Typography>
 				<br />
-      </Paper>
-      <Pages type={type}/>
+      </div>
     </div>
   );
 }

@@ -12,6 +12,8 @@ import Medium from 'mdi-material-ui/Medium'
 import YoutubePlay from 'mdi-material-ui/YoutubePlay'
 import LinkedinBox from 'mdi-material-ui/LinkedinBox'
 import Avatar from 'material-ui/Avatar';
+import Login from '../containers/Login'
+import Tooltip from 'material-ui/Tooltip';
 
 const styles = {
   root: {
@@ -33,12 +35,15 @@ function SimpleAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <Avatar alt="Remy Sharp" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANmAAAAJDEzMjA2ZjVkLWQ2NzYtNDRhNC1hMDU4LWYzZTg1YWRlYzVlNQ.jpg" />
+          <Avatar alt="Sava Gerov" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANmAAAAJDEzMjA2ZjVkLWQ2NzYtNDRhNC1hMDU4LWYzZTg1YWRlYzVlNQ.jpg" />
 
-          <Typography type="title" color="inherit" className={classes.flex}>
-            Sava Gerov
-          </Typography>
-          <a href="https://github.com/savayg" target="_blank">
+          <Tooltip id="tooltip-main" title="This is a personal app which goal is to measure and train reading effectiveness" placement="bottom" className={classes.flex}         enterDelay={300}
+                  leaveDelay={300}>
+            <Typography type="title" color="inherit">
+              Sava Gerov
+            </Typography>
+          </Tooltip>
+          <a href="https://github.com/sgerov" target="_blank">
             <IconButton>
               <GithubCircle />
             </IconButton>
@@ -63,6 +68,7 @@ function SimpleAppBar(props) {
               <YoutubePlay />
             </IconButton>
           </a>
+          <Login />
         </Toolbar>
       </AppBar>
     </div>

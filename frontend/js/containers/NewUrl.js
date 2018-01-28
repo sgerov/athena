@@ -4,6 +4,7 @@ import { urlAutocomplete, urlChange, addUrl } from "../actions/";
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
+import AddIcon from 'material-ui-icons/Add';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import Dialog, {
   DialogActions,
@@ -57,7 +58,10 @@ class FormDialog extends React.Component {
 
     return (
       <div>
-        <Button raised onClick={this.handleClickOpen}>Add url</Button>
+        <br />
+        <Button fab mini color="default" aria-label="add" onClick={this.handleClickOpen}>
+          <AddIcon />
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
