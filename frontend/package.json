@@ -34,6 +34,7 @@
     "webpack-dev-server": "^2.9.1"
   },
   "scripts": {
-    "webpack": "webpack-dev-server --watch --color"
+    "webpack": "webpack-dev-server --watch --color",
+    "build": "NODE_ENV=production webpack --progress --profile --colors"
   }
 }

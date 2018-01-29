@@ -4,7 +4,7 @@ defmodule Athena.Mixfile do
   def project do
     [
       app: :athena,
-      version: "0.0.1",
+      version: "0.0.10",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
@@ -45,7 +45,9 @@ defmodule Athena.Mixfile do
       {:floki, "~> 0.19.0"},
       {:ex_machina, "~> 2.1", only: :test},
       {:mock, "~> 0.2.0", only: :test},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      {:distillery, "~> 1.5.2"},
+      {:edeliver, "~> 1.4.5"}
     ]
   end
 
