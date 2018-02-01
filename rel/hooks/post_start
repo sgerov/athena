@@ -12,5 +12,5 @@ done
 set -e
 
 echo "Running migrations"  
-bin/my-app rpc Elixir.Release.Tasks migrate  
+bin/athena rpc Elixir.Athena.Tasks migrate  
 echo "Migrations run successfully"
