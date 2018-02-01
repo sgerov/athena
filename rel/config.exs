@@ -38,6 +38,7 @@ environment :prod do
   set include_src: false
   set cookie: :"LWk3~7,o5W2`Z6kvu/b~jKb)Vm])[1{FKOmIT8{]0Hmvr<L6V%7]g`hr6h5TZ9QB"
   set output_dir: "rel/athena"
+  set post_start_hook: "rel/hooks/post_start"
 end
 
 # You may define one or more releases in this file.
