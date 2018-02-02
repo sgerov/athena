@@ -15,7 +15,8 @@ use Mix.Config
 # which you typically run after static files are built.
 config :athena, AthenaWeb.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "localhost", port: {:system, "PORT"}], # This is critical for ensuring web-sockets properly authorize.
+  https: [port: {:system, "PORT"}],
+  url: [host: "gerov.es", port: {:system, "PORT"}], # This is critical for ensuring web-sockets properly authorize.
   #cache_static_manifest: "priv/static/manifest.json",
   server: true,
   root: ".",
@@ -44,8 +45,8 @@ config :logger, level: :info
 # We also recommend setting `force_ssl`, ensuring no data is
 # ever sent via http, always redirecting to https:
 #
-config :athena, AthenaWeb.Endpoint,
-  force_ssl: [hsts: true]
+#     config :athena, AthenaWeb.Endpoint,
+#       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 

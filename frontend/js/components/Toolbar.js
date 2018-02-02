@@ -40,7 +40,7 @@ function SimpleAppBar(props) {
           <Tooltip id="tooltip-main" title="This is a personal app which goal is to measure and train reading effectiveness" placement="bottom" className={classes.flex}         enterDelay={300}
                   leaveDelay={300}>
             <Typography type="title" color="inherit">
-              Sava Gerov
+              SG
             </Typography>
           </Tooltip>
           <a href="https://github.com/sgerov" target="_blank">
