@@ -34,7 +34,9 @@ export const RECEIVE_URL = 'RECEIVE_URL'
 export const receiveUrl = (link, json) => {
   let url = json
   url.url = link
-  url.preview = json.images[0]
+  if (json.images) {
+    url.preview = json.images[0] 
+  }
 
   return {
     type: RECEIVE_URL,
