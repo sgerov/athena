@@ -56,16 +56,14 @@ function MainList(props) {
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <Title title="Memory retention" description="Daily readings collection tied to retention score"/>
-          {renderUrls}
-          <br />
           <Pages type="urls"/>
+          {renderUrls}
           { currentUser.user_id ? <NewUrl /> : null }
         </Grid>
         <Grid item xs={12} sm={6}>
           <Title title="Books" description="Reading list along with personal impressions"/>
-          {renderBooks}
-          <br /> 
           <Pages type="books"/>
+          {renderBooks}
           { currentUser.user_id ? <NewBook /> : null }
         </Grid>
       </Grid>

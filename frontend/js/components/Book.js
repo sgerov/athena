@@ -10,6 +10,7 @@ import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
+import Avatar from 'material-ui/Avatar';
 
 const styles = theme => ({
   root: {
@@ -18,6 +19,7 @@ const styles = theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
+    marginLeft: 10
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -63,11 +65,12 @@ function Book(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>{(title || "").substr(0, 70)} ..</Typography>
+          <Avatar alt="Book cover" src={cover}/>
+          <Typography className={classes.heading}>{title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           <div className={classes.column}>
-						<img src={cover} width='100' />
+            <img src={cover} width='100' />
           </div>
           <div className={classes.helper}>
             <Typography type="caption">

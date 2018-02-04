@@ -12,6 +12,7 @@ import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import { LinearProgress } from 'material-ui/Progress';
 import Tooltip from 'material-ui/Tooltip';
+import Avatar from 'material-ui/Avatar';
 
 const styles = theme => ({
   root: {
@@ -23,6 +24,7 @@ const styles = theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
+    marginLeft: 10
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
@@ -68,7 +70,8 @@ function Url(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography className={classes.heading}>{(title || "").substr(0, 70)} ..</Typography>
+          <Avatar alt="Url preview" src={preview}/>
+          <Typography className={classes.heading}>{title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           <div className={classes.column}>
