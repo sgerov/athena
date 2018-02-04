@@ -1,5 +1,6 @@
 defmodule AthenaWeb.BookController do
   use AthenaWeb, :controller
+  import Ecto.Query, only: [from: 2]
 
   alias Athena.{Repo, Book}
 
@@ -63,5 +64,14 @@ defmodule AthenaWeb.BookController do
       {:error, %HTTPoison.Error{reason: reason}} ->
         conn |> put_status(400) |> json(%{error: reason})
     end
+  end
+
+  def graph(conn, _params) do
+    query = from b in Book,
+      where: b.read_at < ago(6, "month"),
+      group_by: fragment("date_part('month', ?)", b.read_at),
+      select: %{month: fragment("date_part('month', ?)", b.read_at), books: count(b.id), pages: avg(b.pages)}
+
+    render conn, data: Repo.all(query)
   end
 end

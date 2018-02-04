@@ -8,6 +8,10 @@ defmodule AthenaWeb.BookView do
     }
   end
 
+  def render("graph.json", %{data: data}) do
+    Enum.map(data, &month_json/1)
+  end
+
   def book_json(book) do
     %{
       id: book.id,
@@ -18,5 +22,14 @@ defmodule AthenaWeb.BookView do
       published_at: book.published_at.year,
       read_at: book.read_at.year,
     }
+  end
+
+  def month_json(data) do
+    data
+    #%{
+      #name: data.name,
+      #books: data.books,
+      #pages: data.pages,
+    #}
   end
 end

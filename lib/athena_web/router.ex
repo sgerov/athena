@@ -44,6 +44,7 @@ defmodule AthenaWeb.Router do
 
     resources "/books", BookController, only: [:index]
     get "/books/autocomplete", BookController, :autocomplete
+    get "/books/graph", BookController, :graph
 
     resources "/urls", UrlController, only: [:index]
     get "/urls/autocomplete", UrlController, :autocomplete
