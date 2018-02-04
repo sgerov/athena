@@ -12,19 +12,19 @@ const data = [
 ];
 
 export default function Graph(props) {
-  const { className } = props
+  const { className, data, x, y1, y2 } = props
 
   return (
     <LineChart className={className} width={450} height={150} data={data}
       margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-      <XAxis dataKey="name"/>
+      <XAxis dataKey={x}/>
       <YAxis yAxisId="left" />
       <YAxis yAxisId="right" orientation="right" />
       <CartesianGrid strokeDasharray="3 3"/>
       <Tooltip/>
       <Legend />
-      <Line yAxisId="left" type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
-      <Line yAxisId="right" type="monotone" dataKey="uv" stroke="#82ca9d" />
+      <Line yAxisId="left" type="monotone" dataKey={y1} stroke="#8884d8" activeDot={{r: 8}}/>
+      <Line yAxisId="right" type="monotone" dataKey={y2} stroke="#82ca9d" />
     </LineChart>
   );
 }

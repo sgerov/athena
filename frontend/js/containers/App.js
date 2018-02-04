@@ -2,22 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MainList from "../components/MainList";
 import Toolbar from "../components/Toolbar";
-import { fetchBooks, fetchUrls, onDelete, getCurrentUser } from "../actions/";
+import { fetchBooks, fetchUrls, onDelete, getCurrentUser, requestBookGraph, requestUrlGraph } from "../actions/";
 
 class App extends Component {
   componentWillMount() {
     this.props.fetchBooks();
     this.props.fetchUrls();
     this.props.getCurrentUser();
+    this.props.requestBookGraph();
+    this.props.requestUrlGraph();
   }
 
   render() {
-    const { urls, books, currentUser } = this.props;
+    const { urls, books, currentUser, bookGraph, urlGraph } = this.props;
 
     return (
       <div>
         <Toolbar />
-        <MainList books={books} urls={urls} onDelete={this.props.onDelete} currentUser={currentUser} />
+        <MainList books={books} urls={urls} onDelete={this.props.onDelete} currentUser={currentUser} bookGraph={bookGraph} urlGraph={urlGraph} />
       </div>
     );
   }
@@ -29,6 +31,8 @@ const AppContainer = connect(
       books: state.books.items,
       urls: state.urls.items,
       currentUser: state.currentUser,
+      urlGraph: state.urlGraph,
+      bookGraph: state.bookGraph
     };
   },
   function mapDispatchToProps(dispatch) {
@@ -44,6 +48,12 @@ const AppContainer = connect(
       },
       getCurrentUser: () => {
         dispatch(getCurrentUser());
+      },
+      requestBookGraph: () => {
+        dispatch(requestBookGraph());
+      },
+      requestUrlGraph: () => {
+        dispatch(requestUrlGraph());
       }
     };
   }

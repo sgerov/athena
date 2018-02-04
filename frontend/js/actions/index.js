@@ -1,5 +1,6 @@
 export * from './Book';
 export * from './Url';
+export * from './Stats';
 
 import { fetchUrls, fetchBooks } from '.'
 

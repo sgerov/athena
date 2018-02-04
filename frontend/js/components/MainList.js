@@ -10,7 +10,6 @@ import NewBook from '../containers/NewBook'
 import NewUrl from '../containers/NewUrl'
 import Pages from '../containers/Pages'
 
-
 const styles = theme => ({
   graph: {
     margin: "0 auto"
@@ -18,7 +17,7 @@ const styles = theme => ({
 });
 
 function MainList(props) {
-  const { urls, books, classes, onDelete, currentUser } = props;
+  const { urls, books, classes, onDelete, currentUser, urlGraph, bookGraph } = props;
 
   const renderBooks = books.map((book, i) => {
     return <Book 
@@ -53,14 +52,14 @@ function MainList(props) {
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <Title title="Memory retention" description="Daily readings collection tied to retention score"/>
-          <Graph className={classes.graph}/>
+          <Graph className={classes.graph} data={urlGraph} x="day" y1="urls" y2="score"/>
           <Pages type="urls"/>
           {renderUrls}
           { currentUser.user_id ? <NewUrl /> : null }
         </Grid>
         <Grid item xs={12} sm={6}>
           <Title title="Books" description="Reading list along with personal impressions"/>
-          <Graph className={classes.graph}/>
+          <Graph className={classes.graph} data={bookGraph} x="month" y1="books" y2="pages"/>
           <Pages type="books"/>
           {renderBooks}
           { currentUser.user_id ? <NewBook /> : null }

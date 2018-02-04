@@ -1,6 +1,7 @@
 // @flow
 import { books, bookAsyncStatus, newBook } from "./Book"
 import { urls, urlAsyncStatus, newUrl } from "./Url"
+import { bookGraph, urlGraph } from "./Stats"
 import { combineReducers } from "redux";
 import {
   RECEIVE_CURRENT_USER,
@@ -26,6 +27,8 @@ const phoenixApp = combineReducers({
   bookAsyncStatus,
   urlAsyncStatus,
   currentUser,
+  urlGraph,
+  bookGraph,
 });
 
 export default phoenixApp;
