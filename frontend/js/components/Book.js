@@ -48,6 +48,10 @@ const styles = theme => ({
       textDecoration: 'underline',
     },
   },
+  elementPreview: {
+    width: 45,
+    height: 45,
+  },
 });
 
 function renderDeleteButton(props) {
@@ -65,7 +69,7 @@ function Book(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Avatar alt="Book cover" src={cover}/>
+          <Avatar alt="Book cover" src={cover} className={classes.elementPreview}/>
           <Typography className={classes.heading}>{title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>

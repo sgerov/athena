@@ -3,6 +3,7 @@ import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
 import Book from './Book'
+import Graph from './Graph'
 import Url from './Url'
 import Title from './Title'
 import NewBook from '../containers/NewBook'
@@ -10,13 +11,8 @@ import NewUrl from '../containers/NewUrl'
 import Pages from '../containers/Pages'
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    marginTop: 30,
-  },
-  paper: {
-    padding: 16,
-    textAlign: 'center',
+  graph: {
+    margin: "0 auto"
   },
 });
 
@@ -56,12 +52,14 @@ function MainList(props) {
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <Title title="Memory retention" description="Daily readings collection tied to retention score"/>
+          <Graph className={classes.graph}/>
           <Pages type="urls"/>
           {renderUrls}
           { currentUser.user_id ? <NewUrl /> : null }
         </Grid>
         <Grid item xs={12} sm={6}>
           <Title title="Books" description="Reading list along with personal impressions"/>
+          <Graph className={classes.graph}/>
           <Pages type="books"/>
           {renderBooks}
           { currentUser.user_id ? <NewBook /> : null }

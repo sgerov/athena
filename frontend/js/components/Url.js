@@ -53,6 +53,10 @@ const styles = theme => ({
       textDecoration: 'underline',
     },
   },
+  elementPreview: {
+    width: 45,
+    height: 45,
+  },
 });
 
 function renderDeleteButton(props) {
@@ -70,7 +74,7 @@ function Url(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Avatar alt="Url preview" src={preview}/>
+          <Avatar alt="Url preview" src={preview} className={classes.elementPreview} />
           <Typography className={classes.heading}>{title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
