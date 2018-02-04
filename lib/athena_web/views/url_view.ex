@@ -8,6 +8,10 @@ defmodule AthenaWeb.UrlView do
     }
   end
 
+  def render("graph.json", %{data: data}) do
+    Enum.map(data, &month_json/1)
+  end
+
   def url_json(url) do
     %{
       id: url.id,
@@ -18,6 +22,14 @@ defmodule AthenaWeb.UrlView do
       summary: url.summary,
       title: url.title,
       score: url.score
+    }
+  end
+
+  def month_json(data) do
+    %{
+      day: data.day,
+      score: data.score,
+      urls: data.urls,
     }
   end
 end

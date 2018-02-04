@@ -1,5 +1,6 @@
 defmodule AthenaWeb.UrlController do
   use AthenaWeb, :controller
+  import Ecto.Query, only: [from: 2]
 
   alias Athena.{Repo, Url}
 
@@ -40,5 +41,14 @@ defmodule AthenaWeb.UrlController do
       {:error, %HTTPoison.Error{reason: reason}} ->
         conn |> put_status(400) |> json(%{error: reason})
     end
+  end
+
+  def graph(conn, _params) do
+    query = from u in Url,
+      where: u.inserted_at > ago(1, "month"),
+      group_by: fragment("date_part('day', ?)", u.inserted_at),
+      select: %{day: fragment("date_part('day', ?)", u.inserted_at), urls: count(u.id), score: avg(u.score)}
+
+    render conn, data: Repo.all(query)
   end
 end

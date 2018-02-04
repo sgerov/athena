@@ -25,11 +25,10 @@ defmodule AthenaWeb.BookView do
   end
 
   def month_json(data) do
-    data
-    #%{
-      #name: data.name,
-      #books: data.books,
-      #pages: data.pages,
-    #}
+    %{
+      month: data.month,
+      pages: data.pages,
+      books: data.books,
+    }
   end
 end

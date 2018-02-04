@@ -48,6 +48,7 @@ defmodule AthenaWeb.Router do
 
     resources "/urls", UrlController, only: [:index]
     get "/urls/autocomplete", UrlController, :autocomplete
+    get "/urls/graph", UrlController, :graph
 
     scope "/users" do
       scope "/" do
