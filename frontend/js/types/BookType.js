@@ -5,6 +5,7 @@ import { Record } from "immutable";
 export default class BookType
     extends Record({
         id: 0,
+        pages: 0,
         author: "",
         comment: "",
         cover: "",
@@ -13,6 +14,7 @@ export default class BookType
         read_at: new Date(),
     }) {
     id: integer;
+    pages: integer;
     author: string;
     comment: string;
     cover: string;

@@ -71,6 +71,7 @@ export const addBook = (book) => {
       credentials: 'same-origin',
       body: JSON.stringify({
         title: book.title,
+        pages: book.pages,
         author: book.author,
         comment: book.comment,
         cover: book.cover,

@@ -15,6 +15,7 @@ import {
 export const newBook = (
   newBook = {
     id: 0,
+    pages: 0,
     title: '',
     author: '',
     cover: '',
@@ -62,6 +63,7 @@ export const books = (
       const items = action.payload.books.map( book => {
         return new BookType({ 
           id: book.id,
+          pages: book.pages,
           title: book.title,
           comment: book.comment,
           cover: book.cover,

@@ -11,6 +11,7 @@ defmodule Athena.Book do
     field :published_at, :date
     field :read_at, :date
     field :title, :string
+    field :pages, :integer
 
     timestamps()
   end
@@ -18,7 +19,7 @@ defmodule Athena.Book do
   @doc false
   def changeset(%Book{} = book, attrs) do
     book
-    |> cast(attrs, [:cover, :title, :author, :published_at, :read_at, :comment])
-    |> validate_required([:cover, :title, :author, :published_at, :read_at, :comment])
+    |> cast(attrs, [:cover, :title, :author, :published_at, :read_at, :comment, :pages])
+    |> validate_required([:cover, :title, :author, :published_at, :read_at, :comment, :pages])
   end
 end
