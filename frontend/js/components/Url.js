@@ -13,6 +13,7 @@ import Divider from 'material-ui/Divider';
 import { LinearProgress } from 'material-ui/Progress';
 import Tooltip from 'material-ui/Tooltip';
 import Avatar from 'material-ui/Avatar';
+import { ListItem } from 'material-ui/List';
 
 const styles = theme => ({
   root: {
@@ -74,8 +75,10 @@ function Url(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Avatar alt="Url preview" src={preview} className={classes.elementPreview} />
-          <Typography className={classes.heading}>{title}</Typography>
+          <ListItem>
+            <Avatar alt="Url preview" src={preview} className={classes.elementPreview} />
+            <Typography className={classes.heading}>{title}</Typography>
+          </ListItem>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           <div className={classes.column}>

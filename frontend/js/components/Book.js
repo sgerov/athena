@@ -11,6 +11,7 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import Avatar from 'material-ui/Avatar';
+import { ListItem } from 'material-ui/List';
 
 const styles = theme => ({
   root: {
@@ -69,8 +70,10 @@ function Book(props) {
     <div className={classes.root}>
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Avatar alt="Book cover" src={cover} className={classes.elementPreview}/>
-          <Typography className={classes.heading}>{title}</Typography>
+          <ListItem>
+            <Avatar alt="Book cover" src={cover} className={classes.elementPreview}/>
+            <Typography className={classes.heading}>{title}</Typography>
+          </ListItem>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails className={classes.details}>
           <div className={classes.column}>
