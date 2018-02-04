@@ -25,7 +25,7 @@ defmodule AthenaWeb.UrlController do
   end
 
   def autocomplete(conn, %{"url" => url }) do
-    case HTTPoison.get(url) do
+    case HTTPoison.get(url, [], [follow_redirect: true]) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         title = body |> Floki.find("title") |> Floki.text
         images = body |> Floki.attribute("img", "src")
