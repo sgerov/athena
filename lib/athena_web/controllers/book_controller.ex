@@ -69,9 +69,9 @@ defmodule AthenaWeb.BookController do
   def graph(conn, _params) do
     query = from b in Book,
       where: b.read_at > ago(1, "year"),
-      order_by: fragment("date_part('month', ?)", b.read_at),
-      group_by: fragment("date_part('month', ?)", b.read_at),
-      select: %{month: fragment("date_part('month', ?)", b.read_at), books: count(b.id), pages: fragment("?::integer", avg(b.pages))}
+      order_by: fragment("to_char(?, 'YY/mon')", b.read_at),
+      group_by: fragment("to_char(?, 'YY/mon')", b.read_at),
+      select: %{month: fragment("to_char(?, 'YY/mon')", b.read_at), books: count(b.id), pages: fragment("?::integer", avg(b.pages))}
 
     render conn, data: Repo.all(query)
   end

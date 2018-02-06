@@ -27,7 +27,7 @@ defmodule AthenaWeb.UrlView do
 
   def month_json(data) do
     %{
-      day: data.day,
+      day: data.day |> String.split("/") |> List.last,
       score: data.score,
       urls: data.urls,
     }

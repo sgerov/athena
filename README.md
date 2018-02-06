@@ -73,7 +73,6 @@ Please make sure to update tests as appropriate.
 ### Roadmap
 
 - Refactor
-- Make graphs more understandable
 - Add meta tags for SEO
 - Add GIF to README on how the app works
 - Use env vars in `.deliver/config`

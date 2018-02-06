@@ -46,9 +46,9 @@ defmodule AthenaWeb.UrlController do
   def graph(conn, _params) do
     query = from u in Url,
       where: u.inserted_at > ago(1, "month"),
-      order_by: fragment("date_part('day', ?)", u.inserted_at),
-      group_by: fragment("date_part('day', ?)", u.inserted_at),
-      select: %{day: fragment("date_part('day', ?)", u.inserted_at), urls: count(u.id), score: fragment("?::integer", avg(u.score))}
+      order_by: fragment("to_char(?, 'MM/DD')", u.inserted_at),
+      group_by: fragment("to_char(?, 'MM/DD')", u.inserted_at),
+      select: %{day: fragment("to_char(?, 'MM/DD')", u.inserted_at), urls: count(u.id), score: fragment("?::integer", avg(u.score))}
 
     render conn, data: Repo.all(query)
   end

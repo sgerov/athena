@@ -26,7 +26,7 @@ defmodule AthenaWeb.BookView do
 
   def month_json(data) do
     %{
-      month: data.month,
+      month: data.month |> String.split("/") |> List.last,
       pages: data.pages,
       books: data.books,
     }
